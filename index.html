@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veloura Skin — Kulit Bercahaya, Kepercayaan Diri Nyata</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,200;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #FAF8F4;
+  --cream-2: #F4EFE6;
+  --cream-3: #EDE4D6;
+  --nude: #C9A882;
+  --nude-2: #B8916A;
+  --nude-3: #9B7A56;
+  --gold: #C49A2E;
+  --gold-2: #D4AA3A;
+  --gold-pale: #F5E9C4;
+  --dark: #1C1710;
+  --dark-2: #2E2418;
+  --mid: #5C4E3A;
+  --muted: #8C7E6C;
+  --f-display: 'Playfair Display', Georgia, serif;
+  --f-body: 'DM Sans', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--cream);
+  color: var(--dark);
+  font-family: var(--f-body);
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+/* ─── NOISE TEXTURE OVERLAY ─── */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 9999;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--cream-2); }
+::-webkit-scrollbar-thumb { background: var(--nude); }
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.1rem 4%;
+  transition: background 0.4s, backdrop-filter 0.4s;
+}
+nav.scrolled {
+  background: rgba(250,248,244,0.94);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(196,154,46,0.1);
+}
+.nav-logo {
+  font-family: var(--f-display);
+  font-size: 1.4rem; font-weight: 700;
+  letter-spacing: 0.06em; color: var(--dark); text-decoration: none;
+  display: flex; align-items: center; gap: 0.4rem;
+}
+.nav-logo .dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; display: inline-block; }
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  font-size: 0.72rem; font-weight: 400; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.2s;
+  position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -2px; left: 0; right: 0;
+  height: 1px; background: var(--gold); transform: scaleX(0); transition: transform 0.25s;
+}
+.nav-links a:hover { color: var(--dark); }
+.nav-links a:hover::after { transform: scaleX(1); }
+.nav-cta {
+  font-family: var(--f-body); font-size: 0.68rem; font-weight: 500;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  background: var(--dark); color: var(--cream);
+  padding: 0.65rem 1.6rem; text-decoration: none; border: none; cursor: pointer;
+  transition: background 0.25s;
+}
+.nav-cta:hover { background: var(--gold); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+.hamburger span { display: block; width: 22px; height: 1.5px; background: var(--dark); }
+
+/* ─── MOBILE MENU ─── */
+.mobile-menu {
+  display: none; position: fixed; inset: 0; z-index: 300;
+  background: var(--dark); flex-direction: column;
+  align-items: center; justify-content: center; gap: 2.5rem;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: var(--f-display); font-size: 2.4rem; font-weight: 400;
+  color: var(--cream); text-decoration: none; font-style: italic;
+  transition: color 0.2s;
+}
+.mobile-menu a:hover { color: var(--gold); }
+.mobile-close {
+  position: absolute; top: 1.5rem; right: 6%;
+  background: none; border: none; font-size: 1.8rem; color: rgba(250,248,244,0.5); cursor: pointer;
+}
+
+/* ─── HERO ─── */
+#hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 55% 45%;
+  position: relative;
+  overflow: hidden;
+}
+.hero-left {
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 10% 6% 8% 6%;
+  position: relative; z-index: 2;
+  background: var(--cream);
+}
+.hero-big-word {
+  font-family: var(--f-display);
+  font-size: clamp(5rem, 12vw, 14rem);
+  font-weight: 900; line-height: 0.88;
+  color: var(--dark); letter-spacing: -0.02em;
+  margin-bottom: 0;
+}
+.hero-big-word em {
+  font-style: italic; color: var(--nude-2); display: block;
+}
+.hero-middle-row {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  margin-top: 2rem; gap: 2rem;
+}
+.hero-sub {
+  max-width: 380px;
+  font-size: 0.88rem; line-height: 1.85; color: var(--mid); font-weight: 300;
+}
+.hero-cta-col {
+  display: flex; flex-direction: column; align-items: flex-end; gap: 0.8rem; flex-shrink: 0;
+}
+.btn-dark {
+  display: inline-block; font-family: var(--f-body);
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--cream); background: var(--dark);
+  padding: 1rem 2.4rem; text-decoration: none; transition: all 0.3s; border: none; cursor: pointer;
+  white-space: nowrap;
+}
+.btn-dark:hover { background: var(--gold); }
+.hero-stat {
+  text-align: right;
+  font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
+}
+.hero-stat strong {
+  display: block; font-family: var(--f-display); font-size: 1.8rem; font-weight: 400;
+  color: var(--gold); letter-spacing: 0; text-transform: none;
+}
+
+.hero-right {
+  position: relative; overflow: hidden;
+  background: var(--nude);
+}
+.hero-right img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center top;
+  display: block;
+}
+.hero-right-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(28,23,16,0.3) 100%);
+}
+.hero-label {
+  position: absolute; top: 40%; left: -1px;
+  writing-mode: vertical-rl; text-orientation: mixed;
+  font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--cream); opacity: 0.55; padding: 1rem 0.75rem;
+  background: var(--dark-2);
+}
+.hero-pill {
+  position: absolute; bottom: 8%; right: 6%;
+  background: var(--cream); padding: 1rem 1.4rem;
+  display: flex; flex-direction: column; gap: 0.2rem;
+}
+.hero-pill .p-num {
+  font-family: var(--f-display); font-size: 2rem; font-weight: 700; color: var(--gold); line-height: 1;
+}
+.hero-pill .p-txt {
+  font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted);
+}
+
+/* ─── MARQUEE ─── */
+.marquee-strip {
+  background: var(--gold); padding: 0.75rem 0; overflow: hidden;
+}
+.marquee-inner {
+  display: flex; gap: 0; white-space: nowrap;
+  animation: marquee 30s linear infinite;
+}
+.marquee-item {
+  font-family: var(--f-body); font-size: 0.62rem; font-weight: 500;
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--dark);
+  padding: 0 2.5rem; flex-shrink: 0;
+  display: flex; align-items: center; gap: 2.5rem;
+}
+.marquee-item::after {
+  content: '✦'; font-size: 0.5rem;
+}
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ─── SECTIONS BASE ─── */
+.label-sm {
+  font-family: var(--f-body); font-size: 0.62rem; font-weight: 500;
+  letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold);
+  display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem;
+}
+.label-sm::before {
+  content: ''; display: block; width: 32px; height: 1px; background: var(--gold); flex-shrink: 0;
+}
+
+/* ─── STORY ─── */
+#story {
+  display: grid; grid-template-columns: 1fr 1fr;
+  min-height: 80vh;
+}
+.story-img {
+  position: relative; overflow: hidden; background: var(--cream-3);
+}
+.story-img img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center;
+  display: block;
+}
+.story-img-caption {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(28,23,16,0.55));
+  padding: 3rem 2rem 1.5rem;
+  font-family: var(--f-display); font-style: italic;
+  font-size: 1.1rem; color: rgba(250,248,244,0.8);
+}
+.story-text {
+  padding: 6rem 6% 6rem 5%;
+  display: flex; flex-direction: column; justify-content: center;
+  background: var(--cream-2);
+}
+.story-headline {
+  font-family: var(--f-display);
+  font-size: clamp(1.8rem, 2.8vw, 3.2rem); font-weight: 500;
+  line-height: 1.18; color: var(--dark); margin-bottom: 1.75rem;
+}
+.story-headline em { font-style: italic; color: var(--nude-2); }
+.story-body {
+  font-size: 0.9rem; line-height: 1.9; color: var(--mid); margin-bottom: 1.5rem;
+}
+.story-quote {
+  margin-top: 2.5rem; padding: 1.75rem;
+  border-left: 3px solid var(--gold); background: var(--gold-pale);
+  font-family: var(--f-display); font-style: italic;
+  font-size: 1.05rem; color: var(--dark-2); line-height: 1.65;
+}
+
+/* ─── BENEFITS ─── */
+#benefits {
+  background: var(--dark); padding: 7rem 5%;
+}
+.benefits-top {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 4rem; flex-wrap: wrap; gap: 2rem;
+}
+.benefits-top .label-sm { color: var(--gold-2); }
+.benefits-top .label-sm::before { background: var(--gold-2); }
+.benefits-title {
+  font-family: var(--f-display); font-size: clamp(2.4rem, 4vw, 4.5rem);
+  font-weight: 700; line-height: 1.05; color: var(--cream);
+  max-width: 580px;
+}
+.benefits-title em { font-style: italic; color: var(--gold-2); }
+.benefits-note {
+  max-width: 300px; font-size: 0.82rem; color: rgba(250,248,244,0.4);
+  line-height: 1.75; align-self: flex-end; font-style: italic;
+}
+.benefits-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: rgba(196,154,46,0.12);
+}
+.benefit-card {
+  padding: 2.5rem 2rem; background: var(--dark);
+  transition: background 0.35s; position: relative; overflow: hidden;
+  cursor: default;
+}
+.benefit-card::before {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: var(--gold); transform: scaleX(0); transition: transform 0.35s; transform-origin: left;
+}
+.benefit-card:hover { background: rgba(196,154,46,0.04); }
+.benefit-card:hover::before { transform: scaleX(1); }
+.b-num {
+  font-family: var(--f-display); font-size: 4rem; font-weight: 900;
+  color: rgba(196,154,46,0.1); line-height: 1; display: block; margin-bottom: 1.25rem;
+}
+.b-title {
+  font-family: var(--f-display); font-size: 1.2rem; font-weight: 500;
+  color: var(--nude); margin-bottom: 0.75rem;
+}
+.b-desc {
+  font-size: 0.8rem; line-height: 1.85; color: rgba(250,248,244,0.42);
+}
+
+/* ─── WHY ─── */
+#why { background: var(--cream); padding: 7rem 5%; }
+.why-inner {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 6rem; align-items: start;
+}
+.why-left-img {
+  position: relative;
+}
+.why-img-main {
+  width: 85%; aspect-ratio: 3/4; object-fit: cover;
+  display: block; margin-left: auto;
+}
+.why-img-accent {
+  position: absolute; bottom: -4%; left: -2%;
+  width: 48%; aspect-ratio: 1; object-fit: cover;
+  border: 5px solid var(--cream);
+}
+.why-num-badge {
+  position: absolute; top: 8%; left: 3%;
+  background: var(--gold); color: var(--dark);
+  padding: 1rem; text-align: center;
+}
+.why-num-badge .wn { font-family: var(--f-display); font-size: 2rem; font-weight: 900; line-height: 1; }
+.why-num-badge .wl { font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase; display: block; margin-top: 0.2rem; }
+.why-right {}
+.why-title {
+  font-family: var(--f-display); font-size: clamp(1.8rem, 2.5vw, 3rem);
+  font-weight: 700; line-height: 1.1; color: var(--dark); margin-bottom: 1.5rem;
+}
+.why-title em { font-style: italic; color: var(--nude-2); }
+.why-intro { font-size: 0.88rem; line-height: 1.9; color: var(--mid); margin-bottom: 2.5rem; }
+.reasons { display: flex; flex-direction: column; gap: 0; }
+.reason {
+  display: grid; grid-template-columns: 48px 1fr;
+  gap: 1.25rem; padding: 1.5rem 0;
+  border-bottom: 1px solid var(--cream-3);
+  transition: background 0.2s;
+}
+.reason:last-child { border-bottom: none; }
+.reason:hover { padding-left: 0.5rem; }
+.reason-ico {
+  width: 42px; height: 42px; background: var(--gold-pale);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+.reason-ico svg { width: 18px; height: 18px; color: var(--gold); }
+.r-title {
+  font-family: var(--f-display); font-size: 1.05rem; font-weight: 500;
+  color: var(--dark); margin-bottom: 0.3rem;
+}
+.r-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.7; }
+
+/* ─── TESTIMONIALS ─── */
+#testi { background: var(--cream-2); padding: 7rem 5%; }
+.testi-top {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 3.5rem; flex-wrap: wrap; gap: 1.5rem;
+}
+.testi-heading {
+  font-family: var(--f-display); font-size: clamp(2rem, 3.5vw, 4rem);
+  font-weight: 700; color: var(--dark); line-height: 1.05;
+}
+.testi-heading em { font-style: italic; color: var(--nude-2); }
+.rating-block { text-align: right; }
+.stars { display: flex; gap: 3px; margin-bottom: 4px; justify-content: flex-end; }
+.star { color: var(--gold); font-size: 0.9rem; }
+.rating-txt { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.08em; }
+.testi-layout {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 1.5rem;
+}
+.testi-card {
+  background: var(--cream); padding: 2.25rem;
+  border: 1px solid var(--cream-3);
+  position: relative; transition: transform 0.3s, box-shadow 0.3s;
+}
+.testi-card:hover { transform: translateY(-5px); box-shadow: 0 12px 40px rgba(28,23,16,0.06); }
+.testi-card.featured {
+  grid-row: span 2; background: var(--dark);
+  border-color: rgba(196,154,46,0.2);
+}
+.tc-quote { font-family: var(--f-display); font-size: 3.5rem; line-height: 0.7; color: var(--gold); margin-bottom: 1rem; display: block; }
+.tc-text {
+  font-family: var(--f-display); font-style: italic;
+  font-size: 1rem; line-height: 1.72; color: var(--mid); margin-bottom: 1.75rem;
+}
+.testi-card.featured .tc-text { color: rgba(250,248,244,0.65); font-size: 1.1rem; }
+.tc-author { display: flex; align-items: center; gap: 0.9rem; }
+.tc-av {
+  width: 38px; height: 38px; border-radius: 50%; background: var(--nude);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--f-display); font-size: 0.9rem; font-weight: 500; color: var(--cream); flex-shrink: 0;
+}
+.testi-card.featured .tc-av { background: var(--gold); color: var(--dark); }
+.tc-name { font-size: 0.8rem; font-weight: 500; color: var(--dark); letter-spacing: 0.04em; }
+.testi-card.featured .tc-name { color: var(--cream); }
+.tc-info { font-size: 0.68rem; color: var(--muted); }
+.tc-ver { font-size: 0.62rem; color: var(--gold); font-weight: 500; letter-spacing: 0.06em; margin-top: 1px; }
+
+/* ─── URGENCY ─── */
+#urgency {
+  background: var(--dark-2); padding: 5.5rem 5%;
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+}
+.urgency-tag { font-family: var(--f-body); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
+.urgency-title {
+  font-family: var(--f-display); font-size: clamp(2rem, 4vw, 4.5rem);
+  font-weight: 700; color: var(--cream); line-height: 1.05; margin-bottom: 1.25rem;
+}
+.urgency-title em { font-style: italic; color: var(--gold-2); }
+.urgency-sub { font-size: 0.88rem; color: rgba(250,248,244,0.5); max-width: 480px; line-height: 1.8; margin-bottom: 3rem; }
+.cd-row { display: flex; gap: 1px; margin-bottom: 3rem; background: rgba(196,154,46,0.15); }
+.cd-unit {
+  background: rgba(0,0,0,0.25); padding: 1.5rem 2rem; text-align: center; min-width: 90px;
+}
+.cd-n { font-family: var(--f-display); font-size: 2.8rem; font-weight: 700; color: var(--gold-2); line-height: 1; display: block; }
+.cd-l { font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(250,248,244,0.3); margin-top: 0.4rem; display: block; }
+.stock-info { }
+.stock-txt { font-size: 0.75rem; color: rgba(250,248,244,0.45); margin-bottom: 0.6rem; font-style: italic; }
+.s-bar { width: 240px; height: 3px; background: rgba(255,255,255,0.1); margin: 0 auto 0.5rem; }
+.s-fill { height: 100%; width: 27%; background: var(--gold); }
+.s-note { font-size: 0.68rem; color: rgba(250,248,244,0.3); }
+
+/* ─── BONUS ─── */
+#bonus { background: var(--cream); padding: 7rem 5%; }
+.bonus-top { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end; margin-bottom: 3.5rem; }
+.bonus-title {
+  font-family: var(--f-display); font-size: clamp(2rem, 3vw, 3.5rem);
+  font-weight: 700; color: var(--dark); line-height: 1.1;
+}
+.bonus-title em { font-style: italic; color: var(--nude-2); }
+.bonus-note { font-size: 0.85rem; color: var(--muted); line-height: 1.8; max-width: 380px; margin-left: auto; text-align: right; }
+.bonus-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
+}
+.bonus-card {
+  background: var(--cream-2); padding: 2rem 1.6rem;
+  border-top: 2px solid var(--cream-3);
+  position: relative; transition: border-color 0.3s, transform 0.3s;
+}
+.bonus-card:hover { border-top-color: var(--gold); transform: translateY(-4px); }
+.b-tag {
+  position: absolute; top: 0; right: 1.5rem;
+  background: var(--gold); color: var(--dark);
+  font-size: 0.58rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 0.25rem 0.75rem; transform: translateY(-50%);
+}
+.bico {
+  width: 48px; height: 48px; background: var(--gold-pale);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.25rem;
+}
+.bico svg { width: 22px; height: 22px; color: var(--gold); }
+.b-name {
+  font-family: var(--f-display); font-size: 1.05rem; font-weight: 500;
+  color: var(--dark); margin-bottom: 0.6rem;
+}
+.b-text { font-size: 0.78rem; color: var(--muted); line-height: 1.75; margin-bottom: 1.2rem; }
+.b-val { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
+.b-val s { color: var(--muted); font-weight: 300; margin-right: 0.4rem; letter-spacing: 0; }
+
+/* ─── CTA ─── */
+#cta { background: var(--dark); }
+.cta-grid { display: grid; grid-template-columns: 1fr 1fr; }
+.cta-left {
+  padding: 7rem 6% 7rem 7%;
+  border-right: 1px solid rgba(196,154,46,0.12);
+  display: flex; flex-direction: column; justify-content: center;
+}
+.cta-tag { font-size: 0.62rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
+.cta-tag::before { content: ''; display: block; width: 30px; height: 1px; background: var(--gold); }
+.cta-head {
+  font-family: var(--f-display); font-size: clamp(2rem, 3vw, 3.4rem);
+  font-weight: 700; color: var(--cream); line-height: 1.08; margin-bottom: 1rem;
+}
+.cta-head em { font-style: italic; color: var(--gold-2); }
+.cta-body { font-size: 0.85rem; color: rgba(250,248,244,0.45); line-height: 1.8; margin-bottom: 2.5rem; max-width: 420px; }
+.price-block { margin-bottom: 2rem; }
+.p-main { font-family: var(--f-display); font-size: 3.5rem; font-weight: 400; color: var(--gold-2); line-height: 1; }
+.p-row { display: flex; align-items: center; gap: 1rem; margin-top: 0.5rem; flex-wrap: wrap; }
+.p-cut { font-family: var(--f-display); font-size: 1.4rem; color: rgba(250,248,244,0.2); text-decoration: line-through; }
+.p-badge { background: var(--gold); color: var(--dark); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.3rem 0.8rem; }
+.perks { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; margin-bottom: 2.5rem; }
+.perks li {
+  font-size: 0.8rem; color: rgba(250,248,244,0.5);
+  display: flex; align-items: center; gap: 0.9rem; padding-bottom: 0.65rem;
+  border-bottom: 1px solid rgba(196,154,46,0.08);
+}
+.perks li:last-child { border-bottom: none; padding-bottom: 0; }
+.perks li::before { content: '✓'; color: var(--gold); font-weight: 700; flex-shrink: 0; }
+.btn-gold-big {
+  display: inline-block; font-family: var(--f-body);
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--dark); background: var(--gold);
+  padding: 1.15rem 3rem; text-decoration: none; border: none; cursor: pointer;
+  transition: all 0.3s; margin-bottom: 0.9rem; display: block; text-align: center;
+}
+.btn-gold-big:hover { background: var(--gold-2); transform: translateY(-2px); }
+.cta-fine { font-size: 0.68rem; color: rgba(250,248,244,0.2); font-style: italic; text-align: center; }
+
+.cta-right {
+  background: var(--nude-3); position: relative; overflow: hidden;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 4rem 5%;
+  gap: 2rem;
+}
+.cta-img {
+  width: 72%; max-width: 280px; aspect-ratio: 3/4; object-fit: cover; display: block;
+  position: relative; z-index: 1;
+}
+.cta-trust { display: flex; flex-wrap: wrap; gap: 0.7rem; justify-content: center; z-index: 1; }
+.t-pill {
+  background: rgba(0,0,0,0.2); color: rgba(250,248,244,0.55);
+  font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.4rem 0.9rem; font-weight: 400;
+}
+.cta-bg-text {
+  position: absolute; bottom: 5%; left: -2%; right: -2%;
+  font-family: var(--f-display); font-size: 6rem; font-weight: 900;
+  color: rgba(0,0,0,0.08); white-space: nowrap; user-select: none; letter-spacing: -0.02em;
+  overflow: hidden; z-index: 0;
+}
+
+/* ─── GUARANTEE ─── */
+#guarantee {
+  background: var(--gold-pale); padding: 6rem 5%;
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+}
+.g-circle {
+  width: 110px; height: 110px; border-radius: 50%;
+  border: 1.5px solid var(--gold);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: var(--cream); margin-bottom: 2.5rem;
+  box-shadow: 0 0 0 8px rgba(196,154,46,0.08);
+}
+.g-num { font-family: var(--f-display); font-size: 2.2rem; font-weight: 900; color: var(--gold); line-height: 1; }
+.g-lbl { font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+.g-title {
+  font-family: var(--f-display); font-size: clamp(1.8rem, 2.5vw, 3rem);
+  font-weight: 700; color: var(--dark); margin-bottom: 1.25rem;
+}
+.g-body {
+  font-size: 0.88rem; line-height: 1.9; color: var(--mid); max-width: 600px; margin-bottom: 1rem;
+}
+.g-note { font-size: 0.75rem; color: var(--muted); font-style: italic; }
+
+/* ─── DISCLAIMER ─── */
+#nb {
+  background: var(--cream-2); padding: 3.5rem 5%;
+  border-top: 1px solid var(--cream-3);
+}
+.nb-wrap { max-width: 780px; margin: 0 auto; }
+.nb-tag { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 1.25rem; }
+.nb-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+.nb-list li { font-size: 0.78rem; color: var(--muted); line-height: 1.75; display: flex; gap: 0.8rem; align-items: flex-start; }
+.nb-list li::before { content: '—'; color: var(--nude); font-family: var(--f-display); flex-shrink: 0; }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--dark); padding: 2.5rem 5%;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+  border-top: 1px solid rgba(196,154,46,0.08);
+}
+.f-logo { font-family: var(--f-display); font-size: 1.3rem; font-weight: 700; color: var(--cream); display: flex; align-items: center; gap: 0.4rem; }
+.f-logo .dot { width: 5px; height: 5px; background: var(--gold); border-radius: 50%; display: inline-block; }
+.f-tag { font-size: 0.65rem; color: rgba(250,248,244,0.25); letter-spacing: 0.1em; margin-top: 0.25rem; }
+.f-copy { font-size: 0.65rem; color: rgba(250,248,244,0.2); }
+
+/* ─── ANIMATIONS ─── */
+.reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.in { opacity: 1; transform: translateY(0); }
+.reveal.d1 { transition-delay: 0.1s; }
+.reveal.d2 { transition-delay: 0.2s; }
+.reveal.d3 { transition-delay: 0.3s; }
+.reveal.d4 { transition-delay: 0.4s; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 960px) {
+  #hero { grid-template-columns: 1fr; }
+  .hero-right { display: none; }
+  .hero-left { padding: 30% 6% 8%; min-height: 100vh; }
+  .hero-big-word { font-size: clamp(4rem, 18vw, 8rem); }
+  .hero-middle-row { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+  .hero-cta-col { align-items: flex-start; }
+  .hero-stat { text-align: left; }
+  #story { grid-template-columns: 1fr; }
+  .story-img { aspect-ratio: 16/9; }
+  .benefits-grid { grid-template-columns: 1fr 1fr; }
+  .why-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .why-left-img { display: none; }
+  .testi-layout { grid-template-columns: 1fr; }
+  .testi-card.featured { grid-row: span 1; }
+  .bonus-top { grid-template-columns: 1fr; gap: 1.5rem; }
+  .bonus-note { margin-left: 0; text-align: left; }
+  .bonus-grid { grid-template-columns: 1fr 1fr; }
+  .cta-grid { grid-template-columns: 1fr; }
+  .cta-left { padding: 4.5rem 6%; border-right: none; border-bottom: 1px solid rgba(196,154,46,0.12); }
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+}
+@media (max-width: 540px) {
+  .benefits-grid { grid-template-columns: 1fr; }
+  .bonus-grid { grid-template-columns: 1fr; }
+  .cd-row { flex-wrap: wrap; gap: 2px; }
+}
+</style>
+</head>
+<body>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="closeMobileMenu()">&#10005;</button>
+  <a href="#manfaat" onclick="closeMobileMenu()">Manfaat</a>
+  <a href="#testi" onclick="closeMobileMenu()">Testimoni</a>
+  <a href="#cta" onclick="closeMobileMenu()">Beli Sekarang</a>
+  <a href="#guarantee" onclick="closeMobileMenu()">Garansi</a>
+</div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#" class="nav-logo">Veloura <span class="dot"></span> Skin</a>
+  <ul class="nav-links">
+    <li><a href="#manfaat">Manfaat</a></li>
+    <li><a href="#testi">Testimoni</a></li>
+    <li><a href="#bonus">Bonus</a></li>
+    <li><a href="#guarantee">Garansi</a></li>
+  </ul>
+  <a href="https://wa.me/6282315349989" class="nav-cta">Dapatkan Sekarang</a>
+  <button class="hamburger" onclick="openMobileMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-big-word reveal">
+      Kulit
+      <em>Bercahaya.</em>
+    </div>
+    <div class="hero-middle-row reveal d2">
+      <p class="hero-sub">
+        Formula premium Veloura Skin dirancang khusus untuk iklim tropis — merawat, memperkuat, dan menghadirkan kilau alami yang tahan sepanjang hari.
+      </p>
+      <div class="hero-cta-col">
+        <a href="#cta" class="btn-dark">Mulai Perjalananmu</a>
+        <div class="hero-stat">
+          <strong>5.000+</strong>
+          Pengguna Aktif
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="https://i.pinimg.com/736x/c6/f2/f2/c6f2f295b9cdd67c3d28304475035b62.jpg" alt="Veloura Skin">
+    <div class="hero-right-overlay"></div>
+    <div class="hero-label">Skincare Ritual Eksklusif</div>
+    <div class="hero-pill">
+      <span class="p-num">14</span>
+      <span class="p-txt">Hari Hasilnya Terasa</span>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-inner">
+    <span class="marquee-item">Formula Premium</span>
+    <span class="marquee-item">Bebas Paraben</span>
+    <span class="marquee-item">Dermatologist Tested</span>
+    <span class="marquee-item">Cocok untuk Kulit Tropis</span>
+    <span class="marquee-item">Cerah dalam 14 Hari</span>
+    <span class="marquee-item">Bebas Bahan Berbahaya</span>
+    <span class="marquee-item">BPOM Terdaftar</span>
+    <span class="marquee-item">Formula Premium</span>
+    <span class="marquee-item">Bebas Paraben</span>
+    <span class="marquee-item">Dermatologist Tested</span>
+    <span class="marquee-item">Cocok untuk Kulit Tropis</span>
+    <span class="marquee-item">Cerah dalam 14 Hari</span>
+    <span class="marquee-item">Bebas Bahan Berbahaya</span>
+    <span class="marquee-item">BPOM Terdaftar</span>
+  </div>
+</div>
+
+<!-- STORY -->
+<section id="story">
+  <div class="story-img">
+    <img src="https://i.pinimg.com/736x/9b/24/14/9b2414db3670500678644d8350df9186.jpg" alt="Skincare ritual">
+    <div class="story-img-caption">"Bukan soal berapa banyak, tapi yang mana yang benar-benar bekerja."</div>
+  </div>
+  <div class="story-text">
+    <div class="label-sm reveal">Kenapa Kulit Kamu Belum Berubah</div>
+    <h2 class="story-headline reveal d1">
+      Produk berganti-ganti,<br>hasil masih <em>sama saja?</em>
+    </h2>
+    <p class="story-body reveal d2">
+      Masalahnya bukan pada kulitmu. Masalahnya ada pada produk yang tidak dirancang untuk kondisi iklim tropis — suhu tinggi, kelembapan ekstrem, dan polusi yang menyerang kulitmu setiap hari.
+    </p>
+    <p class="story-body reveal d3">
+      Veloura Skin lahir dari riset mendalam tentang kebutuhan kulit Asia Tenggara. Setiap bahan dipilih dengan presisi, diformulasikan untuk bekerja di kondisi iklim kita yang sesungguhnya.
+    </p>
+    <blockquote class="story-quote reveal d4">
+      "Kulit sehatmu bukan tentang berapa banyak produk yang kamu pakai, melainkan produk mana yang benar-benar bekerja untuk kulitmu."
+    </blockquote>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section id="manfaat" style="background:var(--dark); padding:7rem 5%;">
+  <div class="benefits-top">
+    <div>
+      <div class="label-sm reveal" style="color:var(--gold-2)">Yang Akan Kamu Rasakan</div>
+      <h2 class="benefits-title reveal d1">Transformasi Nyata,<br><em>Bukan Sekadar Janji</em></h2>
+    </div>
+    <p class="benefits-note reveal d2">Setiap manfaat telah diuji dan diverifikasi melalui uji klinis bersama dermatologis bersertifikat.</p>
+  </div>
+  <div class="benefits-grid">
+    <div class="benefit-card reveal"><span class="b-num">01</span><h3 class="b-title">Cerah Merata 14 Hari</h3><p class="b-desc">Kandungan aktif bekerja dari lapisan terdalam kulit, menyeimbangkan melanin untuk hasil cerah konsisten tanpa belang.</p></div>
+    <div class="benefit-card reveal d1"><span class="b-num">02</span><h3 class="b-title">Lembap Tahan 24 Jam</h3><p class="b-desc">Teknologi Aqua-Lock menjaga kelembapan meski cuaca terik. Kulit terasa kenyal dan tidak kusam sepanjang aktivitas.</p></div>
+    <div class="benefit-card reveal d2"><span class="b-num">03</span><h3 class="b-title">Pori-Pori Lebih Halus</h3><p class="b-desc">Formula Pore-Refine menyempurnakan tekstur kulit secara bertahap. Tampilan pori minimal, finish alami dan mulus.</p></div>
+    <div class="benefit-card reveal d3"><span class="b-num">04</span><h3 class="b-title">Perisai Anti-Polusi</h3><p class="b-desc">Antioksidan kuat membentuk pelindung yang menangkal radikal bebas dan paparan lingkungan sebelum merusak sel kulit.</p></div>
+    <div class="benefit-card reveal"><span class="b-num">05</span><h3 class="b-title">Minyak Terkontrol</h3><p class="b-desc">Khusus untuk kulit kombinasi-berminyak khas tropis. Menyeimbangkan sebum tanpa membuat kulit terasa kering.</p></div>
+    <div class="benefit-card reveal d1"><span class="b-num">06</span><h3 class="b-title">Menenangkan Sensitif</h3><p class="b-desc">Formula bebas iritan meredakan kemerahan dan iritasi. Hasil terasa sejak pemakaian pertama.</p></div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+  <div class="why-inner">
+    <div class="why-left-img reveal">
+      <img class="why-img-main" src="https://i.pinimg.com/1200x/16/be/f1/16bef1bdcc74c226a0f334df5dcbc037.jpg" alt="Veloura Skin detail">
+      <img class="why-img-accent" src="https://i.pinimg.com/736x/9b/24/14/9b2414db3670500678644d8350df9186.jpg" alt="Ritual">
+      <div class="why-num-badge">
+        <div class="wn">93%</div>
+        <span class="wl">Pengguna puas</span>
+      </div>
+    </div>
+    <div class="why-right">
+      <div class="label-sm reveal">Mengapa Veloura Skin</div>
+      <h2 class="why-title reveal d1">Pilihan yang <em>Beda</em><br>dari yang Lain</h2>
+      <p class="why-intro reveal d2">Di tengah lautan produk skincare yang mengklaim serupa, Veloura Skin hadir dengan pendekatan berbeda — sains terverifikasi, bahan transparan, dan hasil yang kamu rasakan sendiri.</p>
+      <div class="reasons">
+        <div class="reason reveal d1">
+          <div class="reason-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div><div class="r-title">Uji Klinis Dermatologis</div><p class="r-desc">Setiap formula melewati uji klinis ketat sebelum sampai ke tanganmu. Bukan sekadar klaim.</p></div>
+        </div>
+        <div class="reason reveal d2">
+          <div class="reason-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <div><div class="r-title">Hasil Terlihat 14 Hari</div><p class="r-desc">93% pengguna melaporkan perubahan nyata pada minggu pertama dan kedua pemakaian.</p></div>
+        </div>
+        <div class="reason reveal d3">
+          <div class="reason-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <div><div class="r-title">Bahan Botanis Berkelanjutan</div><p class="r-desc">Bahan premium dari sumber berkelanjutan, dipilih satu per satu untuk efektivitas dan keamanan jangka panjang.</p></div>
+        </div>
+        <div class="reason reveal d4">
+          <div class="reason-ico">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div><div class="r-title">Transparansi Penuh</div><p class="r-desc">Setiap bahan aktif dijelaskan fungsinya. Tidak ada formula tersembunyi — kamu berhak tahu.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testi">
+  <div class="testi-top">
+    <div>
+      <div class="label-sm reveal">Suara Pelanggan Nyata</div>
+      <h2 class="testi-heading reveal d1">Mereka Sudah<br><em>Merasakannya.</em></h2>
+    </div>
+    <div class="rating-block reveal d2">
+      <div class="stars">
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      </div>
+      <p class="rating-txt">4.9 dari 5 bintang · 2.400+ ulasan terverifikasi</p>
+    </div>
+  </div>
+  <div class="testi-layout">
+    <div class="testi-card featured reveal">
+      <span class="tc-quote">&ldquo;</span>
+      <p class="tc-text">Sudah 3 tahun saya nyari produk yang cocok untuk kulit sensitif. Veloura Skin jadi satu-satunya yang tidak bikin breakout. Minggu kedua sudah keliatan lebih cerah dan merata. Saya tidak akan pakai produk lain lagi.</p>
+      <div class="tc-author">
+        <div class="tc-av">AR</div>
+        <div>
+          <div class="tc-name">Anisa Ramadhani</div>
+          <div class="tc-info">Jakarta, Kulit Sensitif</div>
+          <div class="tc-ver">✓ Pembeli Terverifikasi</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal d1">
+      <span class="tc-quote">&ldquo;</span>
+      <p class="tc-text">Sering di luar ruangan karena kerjaan. Sejak pakai Veloura, perbedaannya signifikan — rekan kerja sampai nanya pakai apa.</p>
+      <div class="tc-author">
+        <div class="tc-av">DP</div>
+        <div>
+          <div class="tc-name">Dian Pertiwi</div>
+          <div class="tc-info">Surabaya, Kulit Kombinasi</div>
+          <div class="tc-ver">✓ Pembeli Terverifikasi</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal d2">
+      <span class="tc-quote">&ldquo;</span>
+      <p class="tc-text">Bekas jerawat yang sudah tahunan mulai memudar di minggu ketiga. Worth every penny.</p>
+      <div class="tc-author">
+        <div class="tc-av">MF</div>
+        <div>
+          <div class="tc-name">Maya Fitriani</div>
+          <div class="tc-info">Bandung, Bekas Jerawat</div>
+          <div class="tc-ver">✓ Pembeli Terverifikasi</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal d1">
+      <span class="tc-quote">&ldquo;</span>
+      <p class="tc-text">Kulit kering dan pecah-pecah di area pipi kini jauh lebih baik. Teksturnya berubah drastis dalam seminggu.</p>
+      <div class="tc-author">
+        <div class="tc-av">SR</div>
+        <div>
+          <div class="tc-name">Siti Rahmaini</div>
+          <div class="tc-info">Medan, Kulit Kering</div>
+          <div class="tc-ver">✓ Pembeli Terverifikasi</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal d2">
+      <span class="tc-quote">&ldquo;</span>
+      <p class="tc-text">Sebagai makeup artist, klien yang pakai Veloura jauh lebih mudah di-makeup. Sekarang saya rekomendasikan ke semua klien.</p>
+      <div class="tc-author">
+        <div class="tc-av">LW</div>
+        <div>
+          <div class="tc-name">Laras Widyanti</div>
+          <div class="tc-info">Jakarta, Makeup Artist</div>
+          <div class="tc-ver">✓ Pembeli Terverifikasi</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- URGENCY -->
+<section id="urgency">
+  <div class="urgency-tag">Penawaran Terbatas</div>
+  <h2 class="urgency-title reveal">Harga Spesial Ini<br><em>Tidak Akan Lama</em></h2>
+  <p class="urgency-sub reveal d1">Penawaran bundling eksklusif berlaku dalam waktu terbatas. Setelah periode ini berakhir, harga kembali ke harga normal.</p>
+  <div class="cd-row reveal d2">
+    <div class="cd-unit"><span class="cd-n" id="cd-h">00</span><span class="cd-l">Jam</span></div>
+    <div class="cd-unit"><span class="cd-n" id="cd-m">00</span><span class="cd-l">Menit</span></div>
+    <div class="cd-unit"><span class="cd-n" id="cd-s">00</span><span class="cd-l">Detik</span></div>
+  </div>
+  <div class="stock-info reveal d3">
+    <p class="stock-txt">Stok tersisa untuk batch ini</p>
+    <div class="s-bar"><div class="s-fill"></div></div>
+    <p class="s-note">Hanya 73 paket lagi dari 270 paket tersedia</p>
+  </div>
+</section>
+
+<!-- BONUS -->
+<section id="bonus">
+  <div class="bonus-top">
+    <div>
+      <div class="label-sm reveal">Eksklusif untuk Pemesanan Sekarang</div>
+      <h2 class="bonus-title reveal d1">Bonus Senilai<br><em>Ratusan Ribu</em></h2>
+    </div>
+    <p class="bonus-note reveal d2">Semua bonus ini khusus untuk kamu yang memesan dalam periode penawaran. Tidak tersedia di pembelian biasa.</p>
+  </div>
+  <div class="bonus-grid">
+    <div class="bonus-card reveal">
+      <div class="b-tag">Bonus 1</div>
+      <div class="bico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+      <h3 class="b-name">Panduan Skincare Ritual</h3>
+      <p class="b-text">E-book eksklusif panduan lengkap rutinitas pagi & malam untuk kulit tropis.</p>
+      <div class="b-val"><s>Rp 150.000</s> GRATIS</div>
+    </div>
+    <div class="bonus-card reveal d1">
+      <div class="b-tag">Bonus 2</div>
+      <div class="bico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+      <h3 class="b-name">Travel Size Mini Kit</h3>
+      <p class="b-text">Set mini Veloura Skin ukuran travel untuk menemani perjalananmu ke mana saja.</p>
+      <div class="b-val"><s>Rp 120.000</s> GRATIS</div>
+    </div>
+    <div class="bonus-card reveal d2">
+      <div class="b-tag">Bonus 3</div>
+      <div class="bico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <h3 class="b-name">Akses Private Community</h3>
+      <p class="b-text">Bergabung dengan ribuan member aktif. Tips eksklusif, early sale, dan konsultasi beauty advisor.</p>
+      <div class="b-val"><s>Rp 200.000</s> GRATIS</div>
+    </div>
+    <div class="bonus-card reveal d3">
+      <div class="b-tag">Bonus 4</div>
+      <div class="bico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg></div>
+      <h3 class="b-name">Konsultasi 1-on-1</h3>
+      <p class="b-text">Sesi 30 menit dengan beauty consultant profesional via video call untuk analisis kulit personal.</p>
+      <div class="b-val"><s>Rp 250.000</s> GRATIS</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-grid">
+    <div class="cta-left">
+      <div class="cta-tag">Penawaran Spesial Hari Ini</div>
+      <h2 class="cta-head reveal">Wujudkan <em>Kulit Impianmu</em><br>Mulai Sekarang</h2>
+      <p class="cta-body reveal d1">Dapatkan Veloura Skin Starter Kit lengkap beserta semua bonus eksklusif. Hanya untuk pemesanan dalam periode terbatas.</p>
+      <div class="price-block reveal d2">
+        <span class="p-main">Rp 299.000</span>
+        <div class="p-row">
+          <span class="p-cut">Rp 550.000</span>
+          <span class="p-badge">Hemat 45%</span>
+        </div>
+      </div>
+      <ul class="perks reveal d2">
+        <li>Veloura Skin Starter Kit lengkap (3 produk)</li>
+        <li>4 bonus eksklusif senilai Rp 720.000</li>
+        <li>Pengiriman gratis ke seluruh Indonesia</li>
+        <li>Garansi uang kembali 30 hari</li>
+        <li>Pembayaran aman enkripsi SSL</li>
+      </ul>
+      <a href="https://wa.me/6282315349989" class="btn-gold-big reveal d3">Pesan Sekarang — Rp 299.000</a>
+      <p class="cta-fine reveal d3">Harga ini berakhir ketika countdown mencapai nol</p>
+    </div>
+    <div class="cta-right">
+      <div class="cta-bg-text">Veloura</div>
+      <img class="cta-img" src="https://i.pinimg.com/1200x/16/be/f1/16bef1bdcc74c226a0f334df5dcbc037.jpg" alt="Veloura Skin Bundle">
+      <div class="cta-trust">
+        <span class="t-pill">BPOM Terdaftar</span>
+        <span class="t-pill">Dermatologist Tested</span>
+        <span class="t-pill">SSL Secured</span>
+        <span class="t-pill">Bebas Paraben</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section id="guarantee">
+  <div class="g-circle reveal">
+    <span class="g-num">30</span>
+    <span class="g-lbl">Hari</span>
+  </div>
+  <h2 class="g-title reveal d1">Garansi Kepuasan Penuh,<br>Tanpa Syarat</h2>
+  <p class="g-body reveal d2">Kami begitu yakin dengan formula Veloura Skin sehingga kami memberikan garansi uang kembali 100% dalam 30 hari pertama. Jika kamu tidak melihat perubahan nyata — atau karena alasan apapun — kami kembalikan penuh pembayaranmu tanpa pertanyaan yang menyulitkan.</p>
+  <p class="g-body reveal d3">Kamu tidak menanggung risiko apapun. Kepuasanmu adalah satu-satunya hal yang penting bagi kami.</p>
+  <p class="g-note reveal d3">Proses pengembalian dana diselesaikan dalam 3–5 hari kerja setelah pengajuan diterima.</p>
+</section>
+
+<!-- DISCLAIMER -->
+<section id="nb">
+  <div class="nb-wrap">
+    <span class="nb-tag">Catatan Penting</span>
+    <ul class="nb-list">
+      <li>Hasil penggunaan dapat bervariasi tergantung jenis kulit, kondisi kesehatan, dan konsistensi pemakaian.</li>
+      <li>Veloura Skin bukan produk obat dan tidak dimaksudkan untuk mendiagnosis, mengobati, atau mencegah kondisi medis apapun.</li>
+      <li>Lakukan uji tempel (patch test) pada area kecil selama 24 jam sebelum pemakaian pertama, terutama untuk kulit sensitif.</li>
+      <li>Harga yang tercantum adalah harga promosi selama periode penawaran. Veloura Skin berhak mengubah harga setelah periode promosi berakhir.</li>
+      <li>Garansi uang kembali berlaku untuk pembelian pertama dan tidak berlaku untuk produk yang sudah digunakan lebih dari 30% isi kemasan.</li>
+      <li>Untuk pertanyaan atau kendala pemesanan, hubungi customer service kami melalui WhatsApp atau email di halaman kontak.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="f-logo">Veloura <span class="dot"></span> Skin</div>
+    <div class="f-tag">Kulit Bercahaya, Kepercayaan Diri Nyata</div>
+  </div>
+  <div class="f-copy">&copy; 2025 Veloura Skin. Semua hak dilindungi.</div>
+</footer>
+
+<script>
+// Scroll reveal
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Nav scroll effect
+window.addEventListener('scroll', () => {
+  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Countdown
+function countdown() {
+  let end;
+  try { end = parseInt(localStorage.getItem('vs_cd')); } catch(e) {}
+  if (!end || isNaN(end)) {
+    end = Date.now() + 5 * 60 * 60 * 1000;
+    try { localStorage.setItem('vs_cd', end); } catch(e) {}
+  }
+  const diff = Math.max(0, end - Date.now());
+  const h = Math.floor(diff / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
+  document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+}
+countdown();
+setInterval(countdown, 1000);
+
+// Mobile menu
+function openMobileMenu() { document.getElementById('mobileMenu').classList.add('open'); }
+function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+</script>
+</body>
+</html>
