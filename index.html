@@ -1,862 +1,1011 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Veloura Skin — Kulit Bercahaya, Kepercayaan Diri Nyata</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,200;1,9..40,300&display=swap" rel="stylesheet">
-<style>
-:root {
-  --cream: #FAF8F4;
-  --cream-2: #F4EFE6;
-  --cream-3: #EDE4D6;
-  --nude: #C9A882;
-  --nude-2: #B8916A;
-  --nude-3: #9B7A56;
-  --gold: #C49A2E;
-  --gold-2: #D4AA3A;
-  --gold-pale: #F5E9C4;
-  --dark: #1C1710;
-  --dark-2: #2E2418;
-  --mid: #5C4E3A;
-  --muted: #8C7E6C;
-  --f-display: 'Playfair Display', Georgia, serif;
-  --f-body: 'DM Sans', sans-serif;
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PIK Motor Tasikmalaya — Bengkel Motor Terpercaya</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  background: var(--cream);
-  color: var(--dark);
-  font-family: var(--f-body);
-  font-weight: 300;
-  overflow-x: hidden;
-}
+    :root {
+      --red:       #D62828;
+      --red-dark:  #A01E1E;
+      --red-glow:  rgba(214,40,40,0.18);
+      --gold:      #E9B84A;
+      --black:     #0A0A0A;
+      --dark:      #111111;
+      --card:      #181818;
+      --border:    rgba(255,255,255,0.07);
+      --text:      #F0EDE8;
+      --muted:     #9A9590;
+      --white:     #FFFFFF;
+    }
 
-/* ─── NOISE TEXTURE OVERLAY ─── */
-body::before {
-  content: '';
-  position: fixed; inset: 0; z-index: 9999;
-  pointer-events: none;
-  opacity: 0.025;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-}
+    html { scroll-behavior: smooth; }
 
-/* ─── SCROLLBAR ─── */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: var(--cream-2); }
-::-webkit-scrollbar-thumb { background: var(--nude); }
+    body {
+      background: var(--black);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
 
-/* ─── NAV ─── */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 1.1rem 4%;
-  transition: background 0.4s, backdrop-filter 0.4s;
-}
-nav.scrolled {
-  background: rgba(250,248,244,0.94);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(196,154,46,0.1);
-}
-.nav-logo {
-  font-family: var(--f-display);
-  font-size: 1.4rem; font-weight: 700;
-  letter-spacing: 0.06em; color: var(--dark); text-decoration: none;
-  display: flex; align-items: center; gap: 0.4rem;
-}
-.nav-logo .dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; display: inline-block; }
-.nav-links { display: flex; gap: 2.5rem; list-style: none; }
-.nav-links a {
-  font-size: 0.72rem; font-weight: 400; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.2s;
-  position: relative;
-}
-.nav-links a::after {
-  content: ''; position: absolute; bottom: -2px; left: 0; right: 0;
-  height: 1px; background: var(--gold); transform: scaleX(0); transition: transform 0.25s;
-}
-.nav-links a:hover { color: var(--dark); }
-.nav-links a:hover::after { transform: scaleX(1); }
-.nav-cta {
-  font-family: var(--f-body); font-size: 0.68rem; font-weight: 500;
-  letter-spacing: 0.16em; text-transform: uppercase;
-  background: var(--dark); color: var(--cream);
-  padding: 0.65rem 1.6rem; text-decoration: none; border: none; cursor: pointer;
-  transition: background 0.25s;
-}
-.nav-cta:hover { background: var(--gold); }
-.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
-.hamburger span { display: block; width: 22px; height: 1.5px; background: var(--dark); }
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 4px; }
 
-/* ─── MOBILE MENU ─── */
-.mobile-menu {
-  display: none; position: fixed; inset: 0; z-index: 300;
-  background: var(--dark); flex-direction: column;
-  align-items: center; justify-content: center; gap: 2.5rem;
-}
-.mobile-menu.open { display: flex; }
-.mobile-menu a {
-  font-family: var(--f-display); font-size: 2.4rem; font-weight: 400;
-  color: var(--cream); text-decoration: none; font-style: italic;
-  transition: color 0.2s;
-}
-.mobile-menu a:hover { color: var(--gold); }
-.mobile-close {
-  position: absolute; top: 1.5rem; right: 6%;
-  background: none; border: none; font-size: 1.8rem; color: rgba(250,248,244,0.5); cursor: pointer;
-}
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 5%;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      transition: padding .3s;
+    }
+    nav.scrolled { padding: .65rem 5%; }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.7rem;
+      letter-spacing: .12em;
+      color: var(--white);
+    }
+    .nav-logo span { color: var(--red); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-family: 'Syne', sans-serif;
+      font-size: .82rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      background: var(--red);
+      color: var(--white) !important;
+      padding: .45rem 1.1rem;
+      border-radius: 4px;
+      transition: background .2s !important;
+    }
+    .nav-cta:hover { background: var(--red-dark) !important; color: var(--white) !important; }
 
-/* ─── HERO ─── */
-#hero {
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: 55% 45%;
-  position: relative;
-  overflow: hidden;
-}
-.hero-left {
-  display: flex; flex-direction: column; justify-content: flex-end;
-  padding: 10% 6% 8% 6%;
-  position: relative; z-index: 2;
-  background: var(--cream);
-}
-.hero-big-word {
-  font-family: var(--f-display);
-  font-size: clamp(5rem, 12vw, 14rem);
-  font-weight: 900; line-height: 0.88;
-  color: var(--dark); letter-spacing: -0.02em;
-  margin-bottom: 0;
-}
-.hero-big-word em {
-  font-style: italic; color: var(--nude-2); display: block;
-}
-.hero-middle-row {
-  display: flex; align-items: flex-end; justify-content: space-between;
-  margin-top: 2rem; gap: 2rem;
-}
-.hero-sub {
-  max-width: 380px;
-  font-size: 0.88rem; line-height: 1.85; color: var(--mid); font-weight: 300;
-}
-.hero-cta-col {
-  display: flex; flex-direction: column; align-items: flex-end; gap: 0.8rem; flex-shrink: 0;
-}
-.btn-dark {
-  display: inline-block; font-family: var(--f-body);
-  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--cream); background: var(--dark);
-  padding: 1rem 2.4rem; text-decoration: none; transition: all 0.3s; border: none; cursor: pointer;
-  white-space: nowrap;
-}
-.btn-dark:hover { background: var(--gold); }
-.hero-stat {
-  text-align: right;
-  font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
-}
-.hero-stat strong {
-  display: block; font-family: var(--f-display); font-size: 1.8rem; font-weight: 400;
-  color: var(--gold); letter-spacing: 0; text-transform: none;
-}
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { width: 24px; height: 2px; background: var(--white); transition: .3s; }
 
-.hero-right {
-  position: relative; overflow: hidden;
-  background: var(--nude);
-}
-.hero-right img {
-  width: 100%; height: 100%; object-fit: cover; object-position: center top;
-  display: block;
-}
-.hero-right-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(180deg, transparent 50%, rgba(28,23,16,0.3) 100%);
-}
-.hero-label {
-  position: absolute; top: 40%; left: -1px;
-  writing-mode: vertical-rl; text-orientation: mixed;
-  font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
-  color: var(--cream); opacity: 0.55; padding: 1rem 0.75rem;
-  background: var(--dark-2);
-}
-.hero-pill {
-  position: absolute; bottom: 8%; right: 6%;
-  background: var(--cream); padding: 1rem 1.4rem;
-  display: flex; flex-direction: column; gap: 0.2rem;
-}
-.hero-pill .p-num {
-  font-family: var(--f-display); font-size: 2rem; font-weight: 700; color: var(--gold); line-height: 1;
-}
-.hero-pill .p-txt {
-  font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted);
-}
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 8rem 5% 5rem;
+      text-align: center;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(214,40,40,0.12) 0%, transparent 70%),
+                  linear-gradient(180deg, #0A0A0A 0%, #111111 100%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+    }
+    .hero-img-wrap {
+      position: absolute; inset: 0;
+      overflow: hidden;
+    }
+    .hero-img-wrap img {
+      width: 100%; height: 100%; object-fit: cover;
+      opacity: .12;
+      filter: grayscale(60%) contrast(1.2);
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 860px; }
+    .hero-badge {
+      display: inline-block;
+      background: var(--red-glow);
+      border: 1px solid var(--red);
+      color: var(--red);
+      font-family: 'Syne', sans-serif;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      padding: .35rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+      animation: fadeUp .6s ease both;
+    }
+    .hero-headline {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 9vw, 8rem);
+      line-height: .95;
+      letter-spacing: .03em;
+      color: var(--white);
+      animation: fadeUp .7s .1s ease both;
+    }
+    .hero-headline .accent { color: var(--red); }
+    .hero-sub {
+      margin-top: 1.6rem;
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 560px;
+      margin-left: auto; margin-right: auto;
+      animation: fadeUp .7s .2s ease both;
+    }
+    .hero-sub strong { color: var(--text); }
+    .hero-actions {
+      margin-top: 2.5rem;
+      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+      animation: fadeUp .7s .3s ease both;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--red);
+      color: var(--white);
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: .9rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .9rem 2.2rem;
+      border-radius: 6px;
+      text-decoration: none;
+      border: none; cursor: pointer;
+      transition: background .2s, transform .15s, box-shadow .2s;
+      box-shadow: 0 0 24px rgba(214,40,40,0.35);
+    }
+    .btn-primary:hover { background: var(--red-dark); transform: translateY(-2px); box-shadow: 0 0 36px rgba(214,40,40,0.5); }
+    .btn-secondary {
+      display: inline-block;
+      background: transparent;
+      color: var(--white);
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: .9rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .9rem 2.2rem;
+      border-radius: 6px;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.18);
+      cursor: pointer;
+      transition: border-color .2s, color .2s;
+    }
+    .btn-secondary:hover { border-color: var(--white); color: var(--white); }
+    .hero-stats {
+      margin-top: 4rem;
+      display: flex; justify-content: center; gap: 3.5rem; flex-wrap: wrap;
+      animation: fadeUp .7s .4s ease both;
+    }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.6rem;
+      color: var(--white);
+      line-height: 1;
+    }
+    .stat-num span { color: var(--red); }
+    .stat-label { font-size: .78rem; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; margin-top: .2rem; }
+    .hero-scroll {
+      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: .5rem;
+      color: var(--muted); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
+      animation: fadeUp .7s .5s ease both;
+    }
+    .hero-scroll::after {
+      content: '';
+      display: block; width: 1px; height: 40px;
+      background: linear-gradient(var(--red), transparent);
+      animation: scrollLine 1.5s ease infinite;
+    }
+    @keyframes scrollLine { 0%,100%{opacity:1;transform:scaleY(1)} 50%{opacity:.4;transform:scaleY(.6)} }
 
-/* ─── MARQUEE ─── */
-.marquee-strip {
-  background: var(--gold); padding: 0.75rem 0; overflow: hidden;
-}
-.marquee-inner {
-  display: flex; gap: 0; white-space: nowrap;
-  animation: marquee 30s linear infinite;
-}
-.marquee-item {
-  font-family: var(--f-body); font-size: 0.62rem; font-weight: 500;
-  letter-spacing: 0.22em; text-transform: uppercase; color: var(--dark);
-  padding: 0 2.5rem; flex-shrink: 0;
-  display: flex; align-items: center; gap: 2.5rem;
-}
-.marquee-item::after {
-  content: '✦'; font-size: 0.5rem;
-}
-@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    /* ── OPENING / PROBLEM ── */
+    #opening {
+      padding: 7rem 5%;
+      max-width: 960px; margin: 0 auto;
+      text-align: center;
+    }
+    .section-tag {
+      display: inline-block;
+      font-family: 'Syne', sans-serif;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      letter-spacing: .04em;
+      color: var(--white);
+      line-height: 1.05;
+      margin-bottom: 1.4rem;
+    }
+    .section-body {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 680px; margin: 0 auto;
+      line-height: 1.8;
+    }
+    .opening-cards {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+      gap: 1.2rem; margin-top: 3rem;
+    }
+    .problem-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.6rem 1.4rem;
+      text-align: left;
+      transition: border-color .2s, transform .2s;
+    }
+    .problem-card:hover { border-color: rgba(214,40,40,0.4); transform: translateY(-3px); }
+    .problem-icon {
+      width: 40px; height: 40px;
+      border-radius: 8px;
+      background: var(--red-glow);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .problem-icon svg { width: 20px; height: 20px; fill: var(--red); }
+    .problem-card h4 { font-family: 'Syne', sans-serif; font-size: .95rem; font-weight: 700; color: var(--white); margin-bottom: .4rem; }
+    .problem-card p { font-size: .85rem; color: var(--muted); }
 
-/* ─── SECTIONS BASE ─── */
-.label-sm {
-  font-family: var(--f-body); font-size: 0.62rem; font-weight: 500;
-  letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold);
-  display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem;
-}
-.label-sm::before {
-  content: ''; display: block; width: 32px; height: 1px; background: var(--gold); flex-shrink: 0;
-}
+    /* ── BENEFITS ── */
+    #benefit {
+      padding: 7rem 5%;
+      background: var(--dark);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .benefit-inner { max-width: 1100px; margin: 0 auto; }
+    .benefit-header { text-align: center; margin-bottom: 4rem; }
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+      gap: 1.5rem;
+    }
+    .benefit-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem 1.8rem;
+      position: relative; overflow: hidden;
+      transition: border-color .2s, transform .2s;
+    }
+    .benefit-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--red);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .3s;
+    }
+    .benefit-card:hover { border-color: rgba(214,40,40,0.3); transform: translateY(-4px); }
+    .benefit-card:hover::before { transform: scaleX(1); }
+    .benefit-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem;
+      color: rgba(214,40,40,0.12);
+      line-height: 1;
+      position: absolute; top: 1rem; right: 1.2rem;
+    }
+    .benefit-card h3 { font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--white); margin-bottom: .6rem; }
+    .benefit-card p { font-size: .9rem; color: var(--muted); line-height: 1.7; }
 
-/* ─── STORY ─── */
-#story {
-  display: grid; grid-template-columns: 1fr 1fr;
-  min-height: 80vh;
-}
-.story-img {
-  position: relative; overflow: hidden; background: var(--cream-3);
-}
-.story-img img {
-  width: 100%; height: 100%; object-fit: cover; object-position: center;
-  display: block;
-}
-.story-img-caption {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  background: linear-gradient(transparent, rgba(28,23,16,0.55));
-  padding: 3rem 2rem 1.5rem;
-  font-family: var(--f-display); font-style: italic;
-  font-size: 1.1rem; color: rgba(250,248,244,0.8);
-}
-.story-text {
-  padding: 6rem 6% 6rem 5%;
-  display: flex; flex-direction: column; justify-content: center;
-  background: var(--cream-2);
-}
-.story-headline {
-  font-family: var(--f-display);
-  font-size: clamp(1.8rem, 2.8vw, 3.2rem); font-weight: 500;
-  line-height: 1.18; color: var(--dark); margin-bottom: 1.75rem;
-}
-.story-headline em { font-style: italic; color: var(--nude-2); }
-.story-body {
-  font-size: 0.9rem; line-height: 1.9; color: var(--mid); margin-bottom: 1.5rem;
-}
-.story-quote {
-  margin-top: 2.5rem; padding: 1.75rem;
-  border-left: 3px solid var(--gold); background: var(--gold-pale);
-  font-family: var(--f-display); font-style: italic;
-  font-size: 1.05rem; color: var(--dark-2); line-height: 1.65;
-}
+    /* ── WHY US ── */
+    #alasan { padding: 7rem 5%; max-width: 1100px; margin: 0 auto; }
+    .alasan-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .alasan-img {
+      position: relative;
+      border-radius: 14px; overflow: hidden;
+      aspect-ratio: 4/5;
+      background: var(--card);
+    }
+    .alasan-img img { width: 100%; height: 100%; object-fit: cover; }
+    .alasan-img-badge {
+      position: absolute; bottom: 1.5rem; left: 1.5rem;
+      background: var(--red);
+      color: var(--white);
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: .82rem;
+      letter-spacing: .08em;
+      padding: .6rem 1.2rem;
+      border-radius: 6px;
+    }
+    .alasan-list { list-style: none; margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+    .alasan-list li {
+      display: flex; gap: 1rem; align-items: flex-start;
+      padding: 1rem 1.2rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      transition: border-color .2s;
+    }
+    .alasan-list li:hover { border-color: rgba(214,40,40,0.35); }
+    .check-icon {
+      flex-shrink: 0;
+      width: 22px; height: 22px;
+      background: var(--red);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin-top: .15rem;
+    }
+    .check-icon svg { width: 11px; height: 11px; fill: none; stroke: #fff; stroke-width: 2.5; }
+    .alasan-list li p { font-size: .9rem; color: var(--muted); line-height: 1.6; }
+    .alasan-list li strong { color: var(--white); display: block; font-family: 'Syne', sans-serif; font-size: .92rem; margin-bottom: .15rem; }
 
-/* ─── BENEFITS ─── */
-#benefits {
-  background: var(--dark); padding: 7rem 5%;
-}
-.benefits-top {
-  display: flex; justify-content: space-between; align-items: flex-end;
-  margin-bottom: 4rem; flex-wrap: wrap; gap: 2rem;
-}
-.benefits-top .label-sm { color: var(--gold-2); }
-.benefits-top .label-sm::before { background: var(--gold-2); }
-.benefits-title {
-  font-family: var(--f-display); font-size: clamp(2.4rem, 4vw, 4.5rem);
-  font-weight: 700; line-height: 1.05; color: var(--cream);
-  max-width: 580px;
-}
-.benefits-title em { font-style: italic; color: var(--gold-2); }
-.benefits-note {
-  max-width: 300px; font-size: 0.82rem; color: rgba(250,248,244,0.4);
-  line-height: 1.75; align-self: flex-end; font-style: italic;
-}
-.benefits-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 1px; background: rgba(196,154,46,0.12);
-}
-.benefit-card {
-  padding: 2.5rem 2rem; background: var(--dark);
-  transition: background 0.35s; position: relative; overflow: hidden;
-  cursor: default;
-}
-.benefit-card::before {
-  content: '';
-  position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
-  background: var(--gold); transform: scaleX(0); transition: transform 0.35s; transform-origin: left;
-}
-.benefit-card:hover { background: rgba(196,154,46,0.04); }
-.benefit-card:hover::before { transform: scaleX(1); }
-.b-num {
-  font-family: var(--f-display); font-size: 4rem; font-weight: 900;
-  color: rgba(196,154,46,0.1); line-height: 1; display: block; margin-bottom: 1.25rem;
-}
-.b-title {
-  font-family: var(--f-display); font-size: 1.2rem; font-weight: 500;
-  color: var(--nude); margin-bottom: 0.75rem;
-}
-.b-desc {
-  font-size: 0.8rem; line-height: 1.85; color: rgba(250,248,244,0.42);
-}
+    /* ── SERVICES ── */
+    #layanan {
+      padding: 7rem 5%;
+      background: var(--dark);
+      border-top: 1px solid var(--border);
+    }
+    .layanan-inner { max-width: 1100px; margin: 0 auto; }
+    .layanan-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
+      gap: 1.2rem; margin-top: 3rem;
+    }
+    .service-tile {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.8rem 1.4rem;
+      text-align: center;
+      transition: border-color .2s, transform .2s, background .2s;
+      cursor: default;
+    }
+    .service-tile:hover {
+      border-color: var(--red);
+      background: rgba(214,40,40,0.06);
+      transform: translateY(-4px);
+    }
+    .service-tile .icon {
+      width: 48px; height: 48px;
+      background: var(--red-glow);
+      border-radius: 12px;
+      margin: 0 auto .9rem;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .service-tile .icon svg { width: 24px; height: 24px; fill: var(--red); }
+    .service-tile h4 { font-family: 'Syne', sans-serif; font-size: .9rem; font-weight: 700; color: var(--white); }
 
-/* ─── WHY ─── */
-#why { background: var(--cream); padding: 7rem 5%; }
-.why-inner {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 6rem; align-items: start;
-}
-.why-left-img {
-  position: relative;
-}
-.why-img-main {
-  width: 85%; aspect-ratio: 3/4; object-fit: cover;
-  display: block; margin-left: auto;
-}
-.why-img-accent {
-  position: absolute; bottom: -4%; left: -2%;
-  width: 48%; aspect-ratio: 1; object-fit: cover;
-  border: 5px solid var(--cream);
-}
-.why-num-badge {
-  position: absolute; top: 8%; left: 3%;
-  background: var(--gold); color: var(--dark);
-  padding: 1rem; text-align: center;
-}
-.why-num-badge .wn { font-family: var(--f-display); font-size: 2rem; font-weight: 900; line-height: 1; }
-.why-num-badge .wl { font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase; display: block; margin-top: 0.2rem; }
-.why-right {}
-.why-title {
-  font-family: var(--f-display); font-size: clamp(1.8rem, 2.5vw, 3rem);
-  font-weight: 700; line-height: 1.1; color: var(--dark); margin-bottom: 1.5rem;
-}
-.why-title em { font-style: italic; color: var(--nude-2); }
-.why-intro { font-size: 0.88rem; line-height: 1.9; color: var(--mid); margin-bottom: 2.5rem; }
-.reasons { display: flex; flex-direction: column; gap: 0; }
-.reason {
-  display: grid; grid-template-columns: 48px 1fr;
-  gap: 1.25rem; padding: 1.5rem 0;
-  border-bottom: 1px solid var(--cream-3);
-  transition: background 0.2s;
-}
-.reason:last-child { border-bottom: none; }
-.reason:hover { padding-left: 0.5rem; }
-.reason-ico {
-  width: 42px; height: 42px; background: var(--gold-pale);
-  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-  margin-top: 0.15rem;
-}
-.reason-ico svg { width: 18px; height: 18px; color: var(--gold); }
-.r-title {
-  font-family: var(--f-display); font-size: 1.05rem; font-weight: 500;
-  color: var(--dark); margin-bottom: 0.3rem;
-}
-.r-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.7; }
+    /* ── TESTIMONIALS ── */
+    #testimoni { padding: 7rem 5%; max-width: 1100px; margin: 0 auto; }
+    .testi-header { text-align: center; margin-bottom: 4rem; }
+    .testi-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+      gap: 1.5rem;
+    }
+    .testi-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.8rem;
+      position: relative;
+      transition: border-color .2s, transform .2s;
+    }
+    .testi-card:hover { border-color: rgba(214,40,40,0.35); transform: translateY(-3px); }
+    .testi-quote {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 4rem;
+      color: var(--red);
+      line-height: .7;
+      margin-bottom: .8rem;
+      opacity: .5;
+    }
+    .testi-text { font-size: .92rem; color: var(--muted); line-height: 1.75; font-style: italic; margin-bottom: 1.4rem; }
+    .testi-author { display: flex; align-items: center; gap: .9rem; }
+    .testi-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--red-glow);
+      border: 2px solid var(--red);
+      overflow: hidden; flex-shrink: 0;
+    }
+    .testi-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .testi-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: .88rem; color: var(--white); }
+    .testi-role { font-size: .78rem; color: var(--muted); }
+    .stars { display: flex; gap: 3px; margin-bottom: .6rem; }
+    .stars svg { width: 13px; height: 13px; fill: var(--gold); }
 
-/* ─── TESTIMONIALS ─── */
-#testi { background: var(--cream-2); padding: 7rem 5%; }
-.testi-top {
-  display: flex; justify-content: space-between; align-items: flex-end;
-  margin-bottom: 3.5rem; flex-wrap: wrap; gap: 1.5rem;
-}
-.testi-heading {
-  font-family: var(--f-display); font-size: clamp(2rem, 3.5vw, 4rem);
-  font-weight: 700; color: var(--dark); line-height: 1.05;
-}
-.testi-heading em { font-style: italic; color: var(--nude-2); }
-.rating-block { text-align: right; }
-.stars { display: flex; gap: 3px; margin-bottom: 4px; justify-content: flex-end; }
-.star { color: var(--gold); font-size: 0.9rem; }
-.rating-txt { font-size: 0.7rem; color: var(--muted); letter-spacing: 0.08em; }
-.testi-layout {
-  display: grid;
-  grid-template-columns: 1.3fr 1fr 1fr;
-  grid-template-rows: auto auto;
-  gap: 1.5rem;
-}
-.testi-card {
-  background: var(--cream); padding: 2.25rem;
-  border: 1px solid var(--cream-3);
-  position: relative; transition: transform 0.3s, box-shadow 0.3s;
-}
-.testi-card:hover { transform: translateY(-5px); box-shadow: 0 12px 40px rgba(28,23,16,0.06); }
-.testi-card.featured {
-  grid-row: span 2; background: var(--dark);
-  border-color: rgba(196,154,46,0.2);
-}
-.tc-quote { font-family: var(--f-display); font-size: 3.5rem; line-height: 0.7; color: var(--gold); margin-bottom: 1rem; display: block; }
-.tc-text {
-  font-family: var(--f-display); font-style: italic;
-  font-size: 1rem; line-height: 1.72; color: var(--mid); margin-bottom: 1.75rem;
-}
-.testi-card.featured .tc-text { color: rgba(250,248,244,0.65); font-size: 1.1rem; }
-.tc-author { display: flex; align-items: center; gap: 0.9rem; }
-.tc-av {
-  width: 38px; height: 38px; border-radius: 50%; background: var(--nude);
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--f-display); font-size: 0.9rem; font-weight: 500; color: var(--cream); flex-shrink: 0;
-}
-.testi-card.featured .tc-av { background: var(--gold); color: var(--dark); }
-.tc-name { font-size: 0.8rem; font-weight: 500; color: var(--dark); letter-spacing: 0.04em; }
-.testi-card.featured .tc-name { color: var(--cream); }
-.tc-info { font-size: 0.68rem; color: var(--muted); }
-.tc-ver { font-size: 0.62rem; color: var(--gold); font-weight: 500; letter-spacing: 0.06em; margin-top: 1px; }
+    /* ── URGENCY ── */
+    #urgensi {
+      padding: 5rem 5%;
+      background: linear-gradient(135deg, #1a0505 0%, #1a0a0a 100%);
+      border-top: 1px solid rgba(214,40,40,0.25);
+      border-bottom: 1px solid rgba(214,40,40,0.25);
+    }
+    .urgensi-inner { max-width: 820px; margin: 0 auto; text-align: center; }
+    .urgensi-timer {
+      display: flex; justify-content: center; gap: 1rem; margin: 2.5rem 0;
+      flex-wrap: wrap;
+    }
+    .timer-block {
+      background: rgba(0,0,0,0.5);
+      border: 1px solid rgba(214,40,40,0.4);
+      border-radius: 10px;
+      padding: 1.2rem 1.5rem;
+      min-width: 90px;
+    }
+    .timer-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.8rem;
+      color: var(--red);
+      line-height: 1;
+    }
+    .timer-label { font-size: .7rem; color: var(--muted); letter-spacing: .12em; text-transform: uppercase; margin-top: .2rem; }
+    .urgensi-points { list-style: none; display: flex; flex-direction: column; gap: .7rem; margin: 2rem 0; text-align: left; max-width: 500px; margin-left: auto; margin-right: auto; }
+    .urgensi-points li { display: flex; gap: .8rem; align-items: center; font-size: .92rem; color: var(--text); }
+    .urgensi-points li::before { content: '!'; width: 20px; height: 20px; border-radius: 50%; background: var(--red); color: var(--white); font-weight: 700; font-size: .7rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 
-/* ─── URGENCY ─── */
-#urgency {
-  background: var(--dark-2); padding: 5.5rem 5%;
-  display: flex; flex-direction: column; align-items: center; text-align: center;
-}
-.urgency-tag { font-family: var(--f-body); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
-.urgency-title {
-  font-family: var(--f-display); font-size: clamp(2rem, 4vw, 4.5rem);
-  font-weight: 700; color: var(--cream); line-height: 1.05; margin-bottom: 1.25rem;
-}
-.urgency-title em { font-style: italic; color: var(--gold-2); }
-.urgency-sub { font-size: 0.88rem; color: rgba(250,248,244,0.5); max-width: 480px; line-height: 1.8; margin-bottom: 3rem; }
-.cd-row { display: flex; gap: 1px; margin-bottom: 3rem; background: rgba(196,154,46,0.15); }
-.cd-unit {
-  background: rgba(0,0,0,0.25); padding: 1.5rem 2rem; text-align: center; min-width: 90px;
-}
-.cd-n { font-family: var(--f-display); font-size: 2.8rem; font-weight: 700; color: var(--gold-2); line-height: 1; display: block; }
-.cd-l { font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(250,248,244,0.3); margin-top: 0.4rem; display: block; }
-.stock-info { }
-.stock-txt { font-size: 0.75rem; color: rgba(250,248,244,0.45); margin-bottom: 0.6rem; font-style: italic; }
-.s-bar { width: 240px; height: 3px; background: rgba(255,255,255,0.1); margin: 0 auto 0.5rem; }
-.s-fill { height: 100%; width: 27%; background: var(--gold); }
-.s-note { font-size: 0.68rem; color: rgba(250,248,244,0.3); }
+    /* ── BONUS ── */
+    #bonus { padding: 7rem 5%; max-width: 1000px; margin: 0 auto; }
+    .bonus-header { text-align: center; margin-bottom: 3.5rem; }
+    .bonus-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 1.2rem; }
+    .bonus-card {
+      background: linear-gradient(135deg, var(--card), rgba(214,40,40,0.06));
+      border: 1px solid rgba(214,40,40,0.2);
+      border-radius: 12px;
+      padding: 2rem 1.6rem;
+      text-align: center;
+      transition: transform .2s, border-color .2s;
+    }
+    .bonus-card:hover { transform: translateY(-4px); border-color: rgba(214,40,40,0.5); }
+    .bonus-tag {
+      display: inline-block;
+      background: var(--red);
+      color: var(--white);
+      font-family: 'Syne', sans-serif;
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      padding: .3rem .8rem;
+      border-radius: 100px;
+      margin-bottom: 1rem;
+    }
+    .bonus-card h4 { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: .5rem; }
+    .bonus-card p { font-size: .85rem; color: var(--muted); }
 
-/* ─── BONUS ─── */
-#bonus { background: var(--cream); padding: 7rem 5%; }
-.bonus-top { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end; margin-bottom: 3.5rem; }
-.bonus-title {
-  font-family: var(--f-display); font-size: clamp(2rem, 3vw, 3.5rem);
-  font-weight: 700; color: var(--dark); line-height: 1.1;
-}
-.bonus-title em { font-style: italic; color: var(--nude-2); }
-.bonus-note { font-size: 0.85rem; color: var(--muted); line-height: 1.8; max-width: 380px; margin-left: auto; text-align: right; }
-.bonus-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
-}
-.bonus-card {
-  background: var(--cream-2); padding: 2rem 1.6rem;
-  border-top: 2px solid var(--cream-3);
-  position: relative; transition: border-color 0.3s, transform 0.3s;
-}
-.bonus-card:hover { border-top-color: var(--gold); transform: translateY(-4px); }
-.b-tag {
-  position: absolute; top: 0; right: 1.5rem;
-  background: var(--gold); color: var(--dark);
-  font-size: 0.58rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
-  padding: 0.25rem 0.75rem; transform: translateY(-50%);
-}
-.bico {
-  width: 48px; height: 48px; background: var(--gold-pale);
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 1.25rem;
-}
-.bico svg { width: 22px; height: 22px; color: var(--gold); }
-.b-name {
-  font-family: var(--f-display); font-size: 1.05rem; font-weight: 500;
-  color: var(--dark); margin-bottom: 0.6rem;
-}
-.b-text { font-size: 0.78rem; color: var(--muted); line-height: 1.75; margin-bottom: 1.2rem; }
-.b-val { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
-.b-val s { color: var(--muted); font-weight: 300; margin-right: 0.4rem; letter-spacing: 0; }
+    /* ── CTA ── */
+    #cta {
+      padding: 8rem 5%;
+      background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(214,40,40,0.15) 0%, transparent 70%),
+                  var(--dark);
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    .cta-inner { max-width: 700px; margin: 0 auto; }
+    .cta-inner .section-title { font-size: clamp(2.5rem, 6vw, 5rem); }
+    .cta-inner .section-body { margin-bottom: 2.5rem; }
+    .cta-phone {
+      display: inline-block;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.2rem;
+      color: var(--gold);
+      letter-spacing: .06em;
+      text-decoration: none;
+      margin-bottom: 2rem;
+      transition: color .2s;
+    }
+    .cta-phone:hover { color: #f0c966; }
+    .cta-address {
+      margin-top: 1.5rem;
+      font-size: .88rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+    .cta-address a { color: var(--red); text-decoration: none; }
+    .cta-address a:hover { text-decoration: underline; }
 
-/* ─── CTA ─── */
-#cta { background: var(--dark); }
-.cta-grid { display: grid; grid-template-columns: 1fr 1fr; }
-.cta-left {
-  padding: 7rem 6% 7rem 7%;
-  border-right: 1px solid rgba(196,154,46,0.12);
-  display: flex; flex-direction: column; justify-content: center;
-}
-.cta-tag { font-size: 0.62rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
-.cta-tag::before { content: ''; display: block; width: 30px; height: 1px; background: var(--gold); }
-.cta-head {
-  font-family: var(--f-display); font-size: clamp(2rem, 3vw, 3.4rem);
-  font-weight: 700; color: var(--cream); line-height: 1.08; margin-bottom: 1rem;
-}
-.cta-head em { font-style: italic; color: var(--gold-2); }
-.cta-body { font-size: 0.85rem; color: rgba(250,248,244,0.45); line-height: 1.8; margin-bottom: 2.5rem; max-width: 420px; }
-.price-block { margin-bottom: 2rem; }
-.p-main { font-family: var(--f-display); font-size: 3.5rem; font-weight: 400; color: var(--gold-2); line-height: 1; }
-.p-row { display: flex; align-items: center; gap: 1rem; margin-top: 0.5rem; flex-wrap: wrap; }
-.p-cut { font-family: var(--f-display); font-size: 1.4rem; color: rgba(250,248,244,0.2); text-decoration: line-through; }
-.p-badge { background: var(--gold); color: var(--dark); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.3rem 0.8rem; }
-.perks { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; margin-bottom: 2.5rem; }
-.perks li {
-  font-size: 0.8rem; color: rgba(250,248,244,0.5);
-  display: flex; align-items: center; gap: 0.9rem; padding-bottom: 0.65rem;
-  border-bottom: 1px solid rgba(196,154,46,0.08);
-}
-.perks li:last-child { border-bottom: none; padding-bottom: 0; }
-.perks li::before { content: '✓'; color: var(--gold); font-weight: 700; flex-shrink: 0; }
-.btn-gold-big {
-  display: inline-block; font-family: var(--f-body);
-  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--dark); background: var(--gold);
-  padding: 1.15rem 3rem; text-decoration: none; border: none; cursor: pointer;
-  transition: all 0.3s; margin-bottom: 0.9rem; display: block; text-align: center;
-}
-.btn-gold-big:hover { background: var(--gold-2); transform: translateY(-2px); }
-.cta-fine { font-size: 0.68rem; color: rgba(250,248,244,0.2); font-style: italic; text-align: center; }
+    /* ── GUARANTEE ── */
+    #garansi {
+      padding: 6rem 5%;
+      max-width: 900px; margin: 0 auto;
+      text-align: center;
+    }
+    .garansi-box {
+      background: var(--card);
+      border: 2px solid rgba(214,40,40,0.35);
+      border-radius: 16px;
+      padding: 3rem 3.5rem;
+      position: relative; overflow: hidden;
+    }
+    .garansi-box::before {
+      content: '';
+      position: absolute; top: -60px; right: -60px;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(214,40,40,0.1), transparent 70%);
+      pointer-events: none;
+    }
+    .garansi-icon {
+      width: 64px; height: 64px;
+      background: var(--red-glow);
+      border: 2px solid var(--red);
+      border-radius: 50%;
+      margin: 0 auto 1.5rem;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .garansi-icon svg { width: 28px; height: 28px; fill: var(--red); }
+    .garansi-box h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      letter-spacing: .05em;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+    .garansi-box p { font-size: .95rem; color: var(--muted); max-width: 560px; margin: 0 auto; line-height: 1.8; }
 
-.cta-right {
-  background: var(--nude-3); position: relative; overflow: hidden;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  padding: 4rem 5%;
-  gap: 2rem;
-}
-.cta-img {
-  width: 72%; max-width: 280px; aspect-ratio: 3/4; object-fit: cover; display: block;
-  position: relative; z-index: 1;
-}
-.cta-trust { display: flex; flex-wrap: wrap; gap: 0.7rem; justify-content: center; z-index: 1; }
-.t-pill {
-  background: rgba(0,0,0,0.2); color: rgba(250,248,244,0.55);
-  font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.4rem 0.9rem; font-weight: 400;
-}
-.cta-bg-text {
-  position: absolute; bottom: 5%; left: -2%; right: -2%;
-  font-family: var(--f-display); font-size: 6rem; font-weight: 900;
-  color: rgba(0,0,0,0.08); white-space: nowrap; user-select: none; letter-spacing: -0.02em;
-  overflow: hidden; z-index: 0;
-}
+    /* ── NB ── */
+    #nb {
+      padding: 4rem 5%;
+      max-width: 820px; margin: 0 auto;
+    }
+    .nb-box {
+      background: rgba(233,184,74,0.06);
+      border: 1px solid rgba(233,184,74,0.25);
+      border-radius: 12px;
+      padding: 2rem 2.4rem;
+    }
+    .nb-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: .8rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .nb-list { list-style: none; display: flex; flex-direction: column; gap: .65rem; }
+    .nb-list li { font-size: .88rem; color: var(--muted); padding-left: 1.2rem; position: relative; }
+    .nb-list li::before { content: '*'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
 
-/* ─── GUARANTEE ─── */
-#guarantee {
-  background: var(--gold-pale); padding: 6rem 5%;
-  display: flex; flex-direction: column; align-items: center; text-align: center;
-}
-.g-circle {
-  width: 110px; height: 110px; border-radius: 50%;
-  border: 1.5px solid var(--gold);
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  background: var(--cream); margin-bottom: 2.5rem;
-  box-shadow: 0 0 0 8px rgba(196,154,46,0.08);
-}
-.g-num { font-family: var(--f-display); font-size: 2.2rem; font-weight: 900; color: var(--gold); line-height: 1; }
-.g-lbl { font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
-.g-title {
-  font-family: var(--f-display); font-size: clamp(1.8rem, 2.5vw, 3rem);
-  font-weight: 700; color: var(--dark); margin-bottom: 1.25rem;
-}
-.g-body {
-  font-size: 0.88rem; line-height: 1.9; color: var(--mid); max-width: 600px; margin-bottom: 1rem;
-}
-.g-note { font-size: 0.75rem; color: var(--muted); font-style: italic; }
+    /* ── FOOTER ── */
+    footer {
+      padding: 4rem 5% 2.5rem;
+      background: var(--black);
+      border-top: 1px solid var(--border);
+    }
+    .footer-top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem; margin-bottom: 3rem;
+    }
+    .footer-brand .nav-logo { font-size: 2rem; display: block; margin-bottom: .7rem; }
+    .footer-brand p { font-size: .85rem; color: var(--muted); line-height: 1.7; max-width: 280px; }
+    .footer-col h5 {
+      font-family: 'Syne', sans-serif;
+      font-size: .78rem; font-weight: 700;
+      letter-spacing: .15em; text-transform: uppercase;
+      color: var(--white); margin-bottom: 1rem;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .55rem; }
+    .footer-col ul li a { font-size: .85rem; color: var(--muted); text-decoration: none; transition: color .2s; }
+    .footer-col ul li a:hover { color: var(--white); }
+    .footer-col address { font-style: normal; font-size: .85rem; color: var(--muted); line-height: 1.8; }
+    .footer-col address a { color: var(--red); text-decoration: none; }
+    .footer-col address a:hover { text-decoration: underline; }
+    .footer-divider { border: none; border-top: 1px solid var(--border); margin-bottom: 1.5rem; }
+    .footer-bottom {
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-bottom p { font-size: .78rem; color: var(--muted); }
+    .footer-creator { font-size: .78rem; color: var(--muted); }
+    .footer-creator strong { color: var(--gold); }
+    .campus-logo { height: 36px; width: auto; object-fit: contain; opacity: .8; transition: opacity .2s; }
+    .campus-logo:hover { opacity: 1; }
 
-/* ─── DISCLAIMER ─── */
-#nb {
-  background: var(--cream-2); padding: 3.5rem 5%;
-  border-top: 1px solid var(--cream-3);
-}
-.nb-wrap { max-width: 780px; margin: 0 auto; }
-.nb-tag { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 1.25rem; }
-.nb-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
-.nb-list li { font-size: 0.78rem; color: var(--muted); line-height: 1.75; display: flex; gap: 0.8rem; align-items: flex-start; }
-.nb-list li::before { content: '—'; color: var(--nude); font-family: var(--f-display); flex-shrink: 0; }
+    /* ── MOBILE NAV ── */
+    .mobile-menu {
+      display: none;
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(10,10,10,0.97);
+      backdrop-filter: blur(20px);
+      z-index: 200;
+      flex-direction: column;
+      align-items: center; justify-content: center; gap: 2rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.2rem;
+      letter-spacing: .1em;
+      color: var(--white);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .mobile-menu a:hover { color: var(--red); }
+    .mobile-close {
+      position: absolute; top: 1.5rem; right: 5%;
+      background: none; border: none; cursor: pointer;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem; color: var(--muted);
+    }
 
-/* ─── FOOTER ─── */
-footer {
-  background: var(--dark); padding: 2.5rem 5%;
-  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
-  border-top: 1px solid rgba(196,154,46,0.08);
-}
-.f-logo { font-family: var(--f-display); font-size: 1.3rem; font-weight: 700; color: var(--cream); display: flex; align-items: center; gap: 0.4rem; }
-.f-logo .dot { width: 5px; height: 5px; background: var(--gold); border-radius: 50%; display: inline-block; }
-.f-tag { font-size: 0.65rem; color: rgba(250,248,244,0.25); letter-spacing: 0.1em; margin-top: 0.25rem; }
-.f-copy { font-size: 0.65rem; color: rgba(250,248,244,0.2); }
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .reveal {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
-/* ─── ANIMATIONS ─── */
-.reveal {
-  opacity: 0; transform: translateY(24px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
-}
-.reveal.in { opacity: 1; transform: translateY(0); }
-.reveal.d1 { transition-delay: 0.1s; }
-.reveal.d2 { transition-delay: 0.2s; }
-.reveal.d3 { transition-delay: 0.3s; }
-.reveal.d4 { transition-delay: 0.4s; }
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .alasan-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
+      .alasan-img { aspect-ratio: 16/9; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .hero-stats { gap: 2rem; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .garansi-box { padding: 2rem 1.5rem; }
+    }
 
-/* ─── RESPONSIVE ─── */
-@media (max-width: 960px) {
-  #hero { grid-template-columns: 1fr; }
-  .hero-right { display: none; }
-  .hero-left { padding: 30% 6% 8%; min-height: 100vh; }
-  .hero-big-word { font-size: clamp(4rem, 18vw, 8rem); }
-  .hero-middle-row { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
-  .hero-cta-col { align-items: flex-start; }
-  .hero-stat { text-align: left; }
-  #story { grid-template-columns: 1fr; }
-  .story-img { aspect-ratio: 16/9; }
-  .benefits-grid { grid-template-columns: 1fr 1fr; }
-  .why-inner { grid-template-columns: 1fr; gap: 3rem; }
-  .why-left-img { display: none; }
-  .testi-layout { grid-template-columns: 1fr; }
-  .testi-card.featured { grid-row: span 1; }
-  .bonus-top { grid-template-columns: 1fr; gap: 1.5rem; }
-  .bonus-note { margin-left: 0; text-align: left; }
-  .bonus-grid { grid-template-columns: 1fr 1fr; }
-  .cta-grid { grid-template-columns: 1fr; }
-  .cta-left { padding: 4.5rem 6%; border-right: none; border-bottom: 1px solid rgba(196,154,46,0.12); }
-  .nav-links, .nav-cta { display: none; }
-  .hamburger { display: flex; }
-}
-@media (max-width: 540px) {
-  .benefits-grid { grid-template-columns: 1fr; }
-  .bonus-grid { grid-template-columns: 1fr; }
-  .cd-row { flex-wrap: wrap; gap: 2px; }
-}
-</style>
+    /* Tambahkan di bagian CSS */
+    .service-image-wrapper, .benefit-image-wrapper {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      transition: transform 0.3s ease;
+    }
+    .service-image-wrapper:hover, .benefit-image-wrapper:hover {
+      transform: translateY(-5px);
+    }
+    .service-image-wrapper img, .benefit-image-wrapper img {
+      transition: transform 0.5s ease;
+    }
+    .service-image-wrapper:hover img, .benefit-image-wrapper:hover img {
+      transform: scale(1.05);
+    }
+  </style>
 </head>
 <body>
 
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-logo">PIK <span>Motor</span></div>
+  <ul class="nav-links">
+    <li><a href="#opening">Tentang</a></li>
+    <li><a href="#benefit">Layanan</a></li>
+    <li><a href="#testimoni">Testimoni</a></li>
+    <li><a href="#cta" class="nav-cta">Hubungi Kami</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <button class="mobile-close" onclick="closeMobileMenu()">&#10005;</button>
-  <a href="#manfaat" onclick="closeMobileMenu()">Manfaat</a>
-  <a href="#testi" onclick="closeMobileMenu()">Testimoni</a>
-  <a href="#cta" onclick="closeMobileMenu()">Beli Sekarang</a>
-  <a href="#guarantee" onclick="closeMobileMenu()">Garansi</a>
+  <button class="mobile-close" id="mobileClose">Tutup</button>
+  <a href="#opening" onclick="closeMobile()">Tentang</a>
+  <a href="#benefit" onclick="closeMobile()">Layanan</a>
+  <a href="#alasan" onclick="closeMobile()">Mengapa Kami</a>
+  <a href="#testimoni" onclick="closeMobile()">Testimoni</a>
+  <a href="#garansi" onclick="closeMobile()">Garansi</a>
+  <a href="#cta" onclick="closeMobile()">Hubungi Kami</a>
 </div>
-
-<!-- NAV -->
-<nav id="mainNav">
-  <a href="#" class="nav-logo">Veloura <span class="dot"></span> Skin</a>
-  <ul class="nav-links">
-    <li><a href="#manfaat">Manfaat</a></li>
-    <li><a href="#testi">Testimoni</a></li>
-    <li><a href="#bonus">Bonus</a></li>
-    <li><a href="#guarantee">Garansi</a></li>
-  </ul>
-  <a href="https://wa.me/6282315349989" class="nav-cta">Dapatkan Sekarang</a>
-  <button class="hamburger" onclick="openMobileMenu()">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-left">
-    <div class="hero-big-word reveal">
-      Kulit
-      <em>Bercahaya.</em>
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-img-wrap">
+    <img src="hero-bengkel.jpg" alt="Bengkel PIK Motor Tasikmalaya" />
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge">Bengkel Motor Terpercaya Tasikmalaya</div>
+    <h1 class="hero-headline">
+      Solusi <span class="accent">Lengkap</span><br/>Perawatan Motor<br/>Anda
+    </h1>
+    <p class="hero-sub">
+      <strong>PIK Motor Tasikmalaya</strong> hadir dengan teknisi berpengalaman, spare part original, dan pelayanan profesional untuk menjaga performa motor Anda tetap prima setiap saat.
+    </p>
+    <div class="hero-actions">
+      <a href="#cta" class="btn-primary">Booking Sekarang</a>
+      <a href="#benefit" class="btn-secondary">Lihat Layanan</a>
     </div>
-    <div class="hero-middle-row reveal d2">
-      <p class="hero-sub">
-        Formula premium Veloura Skin dirancang khusus untuk iklim tropis — merawat, memperkuat, dan menghadirkan kilau alami yang tahan sepanjang hari.
-      </p>
-      <div class="hero-cta-col">
-        <a href="#cta" class="btn-dark">Mulai Perjalananmu</a>
-        <div class="hero-stat">
-          <strong>5.000+</strong>
-          Pengguna Aktif
-        </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">5000<span>+</span></div>
+        <div class="stat-label">Motor Ditangani</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">10<span>+</span></div>
+        <div class="stat-label">Tahun Berpengalaman</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">98<span>%</span></div>
+        <div class="stat-label">Pelanggan Puas</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">100<span>%</span></div>
+        <div class="stat-label">Spare Part Asli</div>
       </div>
     </div>
   </div>
-  <div class="hero-right">
-    <img src="https://i.pinimg.com/736x/c6/f2/f2/c6f2f295b9cdd67c3d28304475035b62.jpg" alt="Veloura Skin">
-    <div class="hero-right-overlay"></div>
-    <div class="hero-label">Skincare Ritual Eksklusif</div>
-    <div class="hero-pill">
-      <span class="p-num">14</span>
-      <span class="p-txt">Hari Hasilnya Terasa</span>
-    </div>
-  </div>
+  <div class="hero-scroll">Scroll</div>
 </section>
 
-<!-- MARQUEE -->
-<div class="marquee-strip">
-  <div class="marquee-inner">
-    <span class="marquee-item">Formula Premium</span>
-    <span class="marquee-item">Bebas Paraben</span>
-    <span class="marquee-item">Dermatologist Tested</span>
-    <span class="marquee-item">Cocok untuk Kulit Tropis</span>
-    <span class="marquee-item">Cerah dalam 14 Hari</span>
-    <span class="marquee-item">Bebas Bahan Berbahaya</span>
-    <span class="marquee-item">BPOM Terdaftar</span>
-    <span class="marquee-item">Formula Premium</span>
-    <span class="marquee-item">Bebas Paraben</span>
-    <span class="marquee-item">Dermatologist Tested</span>
-    <span class="marquee-item">Cocok untuk Kulit Tropis</span>
-    <span class="marquee-item">Cerah dalam 14 Hari</span>
-    <span class="marquee-item">Bebas Bahan Berbahaya</span>
-    <span class="marquee-item">BPOM Terdaftar</span>
-  </div>
-</div>
-
-<!-- STORY -->
-<section id="story">
-  <div class="story-img">
-    <img src="https://i.pinimg.com/736x/9b/24/14/9b2414db3670500678644d8350df9186.jpg" alt="Skincare ritual">
-    <div class="story-img-caption">"Bukan soal berapa banyak, tapi yang mana yang benar-benar bekerja."</div>
-  </div>
-  <div class="story-text">
-    <div class="label-sm reveal">Kenapa Kulit Kamu Belum Berubah</div>
-    <h2 class="story-headline reveal d1">
-      Produk berganti-ganti,<br>hasil masih <em>sama saja?</em>
-    </h2>
-    <p class="story-body reveal d2">
-      Masalahnya bukan pada kulitmu. Masalahnya ada pada produk yang tidak dirancang untuk kondisi iklim tropis — suhu tinggi, kelembapan ekstrem, dan polusi yang menyerang kulitmu setiap hari.
-    </p>
-    <p class="story-body reveal d3">
-      Veloura Skin lahir dari riset mendalam tentang kebutuhan kulit Asia Tenggara. Setiap bahan dipilih dengan presisi, diformulasikan untuk bekerja di kondisi iklim kita yang sesungguhnya.
-    </p>
-    <blockquote class="story-quote reveal d4">
-      "Kulit sehatmu bukan tentang berapa banyak produk yang kamu pakai, melainkan produk mana yang benar-benar bekerja untuk kulitmu."
-    </blockquote>
+<!-- OPENING -->
+<section id="opening">
+  <div class="section-tag">Kenali Masalah Anda</div>
+  <h2 class="section-title reveal">Motor Bermasalah?<br/>Jangan Tunda Lagi</h2>
+  <p class="section-body reveal">Masalah kecil pada motor yang dibiarkan dapat berkembang menjadi kerusakan serius dan biaya perbaikan yang jauh lebih besar. Kenali tanda-tandanya sejak dini dan segera percayakan kepada ahlinya.</p>
+  <div class="opening-cards">
+    <div class="problem-card reveal">
+      <div class="problem-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+      </div>
+      <h4>Mesin Terasa Berat</h4>
+      <p>Tarikan motor lemah dan konsumsi bahan bakar meningkat drastis menandakan mesin butuh perhatian segera.</p>
+    </div>
+    <div class="problem-card reveal">
+      <div class="problem-icon">
+        <svg viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+      </div>
+      <h4>Bunyi Tidak Wajar</h4>
+      <p>Suara berisik atau ketukan pada mesin merupakan sinyal bahwa ada komponen yang mulai aus atau kendor.</p>
+    </div>
+    <div class="problem-card reveal">
+      <div class="problem-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 4l5 2.18V11c0 3.5-2.33 6.79-5 7.93-2.67-1.14-5-4.43-5-7.93V7.18L12 5z"/></svg>
+      </div>
+      <h4>Rem Tidak Pakem</h4>
+      <p>Sistem pengereman yang lemah membahayakan keselamatan Anda di jalan. Segera lakukan pemeriksaan.</p>
+    </div>
+    <div class="problem-card reveal">
+      <div class="problem-icon">
+        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/></svg>
+      </div>
+      <h4>Lampu & Kelistrikan</h4>
+      <p>Gangguan sistem kelistrikan dapat menyebabkan motor mogok tiba-tiba. Jangan anggap remeh masalah ini.</p>
+    </div>
   </div>
 </section>
 
 <!-- BENEFITS -->
-<section id="manfaat" style="background:var(--dark); padding:7rem 5%;">
-  <div class="benefits-top">
-    <div>
-      <div class="label-sm reveal" style="color:var(--gold-2)">Yang Akan Kamu Rasakan</div>
-      <h2 class="benefits-title reveal d1">Transformasi Nyata,<br><em>Bukan Sekadar Janji</em></h2>
+<section id="benefit">
+  <div class="benefit-inner">
+    <div class="benefit-header">
+      <div class="section-tag">Keunggulan Kami</div>
+      <h2 class="section-title reveal">Mengapa Memilih<br/>PIK Motor?</h2>
+      <p class="section-body reveal">Kami tidak sekadar memperbaiki motor. Kami memberikan solusi menyeluruh dengan standar kualitas tertinggi.</p>
     </div>
-    <p class="benefits-note reveal d2">Setiap manfaat telah diuji dan diverifikasi melalui uji klinis bersama dermatologis bersertifikat.</p>
-  </div>
-  <div class="benefits-grid">
-    <div class="benefit-card reveal"><span class="b-num">01</span><h3 class="b-title">Cerah Merata 14 Hari</h3><p class="b-desc">Kandungan aktif bekerja dari lapisan terdalam kulit, menyeimbangkan melanin untuk hasil cerah konsisten tanpa belang.</p></div>
-    <div class="benefit-card reveal d1"><span class="b-num">02</span><h3 class="b-title">Lembap Tahan 24 Jam</h3><p class="b-desc">Teknologi Aqua-Lock menjaga kelembapan meski cuaca terik. Kulit terasa kenyal dan tidak kusam sepanjang aktivitas.</p></div>
-    <div class="benefit-card reveal d2"><span class="b-num">03</span><h3 class="b-title">Pori-Pori Lebih Halus</h3><p class="b-desc">Formula Pore-Refine menyempurnakan tekstur kulit secara bertahap. Tampilan pori minimal, finish alami dan mulus.</p></div>
-    <div class="benefit-card reveal d3"><span class="b-num">04</span><h3 class="b-title">Perisai Anti-Polusi</h3><p class="b-desc">Antioksidan kuat membentuk pelindung yang menangkal radikal bebas dan paparan lingkungan sebelum merusak sel kulit.</p></div>
-    <div class="benefit-card reveal"><span class="b-num">05</span><h3 class="b-title">Minyak Terkontrol</h3><p class="b-desc">Khusus untuk kulit kombinasi-berminyak khas tropis. Menyeimbangkan sebum tanpa membuat kulit terasa kering.</p></div>
-    <div class="benefit-card reveal d1"><span class="b-num">06</span><h3 class="b-title">Menenangkan Sensitif</h3><p class="b-desc">Formula bebas iritan meredakan kemerahan dan iritasi. Hasil terasa sejak pemakaian pertama.</p></div>
+    <div class="benefits-grid">
+      <div style="margin-top: 3rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+        <div style="position: relative; border-radius: 12px; overflow: hidden;">
+          <img src="A.jpeg" 
+              alt="Sparepart Kumplit" 
+              style="width: 100%; height: 100%; object-fit: cover;">
+          <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(214, 40, 40, 0.9); padding: 1rem;">
+            <h4 style="color: white; font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem;">Teknisi Berpengalaman</h4>
+            <p style="color: white; font-size: 0.8rem; opacity: 0.9;">Tidak Usah Ragu kehabisan apapun</p>
+          </div>
+        </div>
+        <div style="position: relative; border-radius: 12px; overflow: hidden;">
+          <img src="B.jpeg" 
+              alt="Spare Part Original" 
+              style="width: 100%; height: 100%; object-fit: cover;">
+          <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(214, 40, 40, 0.9); padding: 1rem;">
+            <h4 style="color: white; font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem;">Spare Part Asli</h4>
+            <p style="color: white; font-size: 0.8rem; opacity: 0.9;">Kualitas terjamin & garansi</p>
+          </div>
+        </div>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-num">01</div>
+        <h3>Teknisi Bersertifikat</h3>
+        <p>Semua mekanik kami telah mengikuti pelatihan resmi dan memiliki sertifikasi kompetensi. Setiap pekerjaan dikerjakan dengan keahlian yang terstandarisasi.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-num">02</div>
+        <h3>Spare Part Original</h3>
+        <p>Hanya menggunakan suku cadang asli dan berkualitas dari distributor resmi. Keaslian komponen dijamin untuk performa dan keawetan optimal.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-num">03</div>
+        <h3>Estimasi Harga Transparan</h3>
+        <p>Tidak ada biaya tersembunyi. Anda akan mendapatkan estimasi biaya lengkap sebelum pekerjaan dimulai, sehingga tidak ada kejutan di akhir.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-num">04</div>
+        <h3>Pengerjaan Tepat Waktu</h3>
+        <p>Kami menghargai waktu Anda. Setiap pekerjaan diselesaikan sesuai estimasi waktu yang telah disepakati tanpa kompromi pada kualitas.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-num">05</div>
+        <h3>Fasilitas Lengkap & Modern</h3>
+        <p>Bengkel dilengkapi dengan peralatan diagnostik modern dan ruang tunggu yang nyaman agar pengalaman servis Anda menyenangkan.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="benefit-num">06</div>
+        <h3>Konsultasi Gratis</h3>
+        <p>Tim kami siap memberikan konsultasi teknis secara gratis. Tanyakan kondisi motor Anda dan kami akan memberikan rekomendasi terbaik.</p>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- WHY -->
-<section id="why">
-  <div class="why-inner">
-    <div class="why-left-img reveal">
-      <img class="why-img-main" src="https://i.pinimg.com/1200x/16/be/f1/16bef1bdcc74c226a0f334df5dcbc037.jpg" alt="Veloura Skin detail">
-      <img class="why-img-accent" src="https://i.pinimg.com/736x/9b/24/14/9b2414db3670500678644d8350df9186.jpg" alt="Ritual">
-      <div class="why-num-badge">
-        <div class="wn">93%</div>
-        <span class="wl">Pengguna puas</span>
+<!-- LAYANAN -->
+<section id="layanan">
+  <div class="layanan-inner">
+    <div style="margin-bottom: 3rem; position: relative; border-radius: 16px; overflow: hidden;">
+      <img src="C.jpeg" 
+          alt="Layanan Bengkel PIK Motor" 
+          style="width: 100%; height: auto; display: block;">
+      <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); padding: 2rem 1.5rem 1.5rem;">
+        <h3 style="color: white; font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem;">
+          Layanan Lengkap di Satu Atap
+        </h3>
+        <p style="color: var(--muted); font-size: 0.9rem;">
+          Dari tune-up hingga perbaikan mesin, kami siap melayani Anda dengan profesional
+        </p>
       </div>
     </div>
-    <div class="why-right">
-      <div class="label-sm reveal">Mengapa Veloura Skin</div>
-      <h2 class="why-title reveal d1">Pilihan yang <em>Beda</em><br>dari yang Lain</h2>
-      <p class="why-intro reveal d2">Di tengah lautan produk skincare yang mengklaim serupa, Veloura Skin hadir dengan pendekatan berbeda — sains terverifikasi, bahan transparan, dan hasil yang kamu rasakan sendiri.</p>
-      <div class="reasons">
-        <div class="reason reveal d1">
-          <div class="reason-ico">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <div><div class="r-title">Uji Klinis Dermatologis</div><p class="r-desc">Setiap formula melewati uji klinis ketat sebelum sampai ke tanganmu. Bukan sekadar klaim.</p></div>
+    <div style="text-align:center">
+      <div class="section-tag">Jasa Kami</div>
+      <h2 class="section-title reveal">Layanan Lengkap<br/>Satu Atap</h2>
+    </div>
+    <div class="layanan-grid">
+      <div class="service-tile reveal">
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
         </div>
-        <div class="reason reveal d2">
-          <div class="reason-ico">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-          </div>
-          <div><div class="r-title">Hasil Terlihat 14 Hari</div><p class="r-desc">93% pengguna melaporkan perubahan nyata pada minggu pertama dan kedua pemakaian.</p></div>
+        <h4>Tune Up & Servis Berkala</h4>
+      </div>
+      <div class="service-tile reveal">
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.97 0-9-4.03-9-9s4.03-9 9-9 9 4.03 9 9-4.03 9-9 9zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V8z"/></svg>
         </div>
-        <div class="reason reveal d3">
-          <div class="reason-ico">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          </div>
-          <div><div class="r-title">Bahan Botanis Berkelanjutan</div><p class="r-desc">Bahan premium dari sumber berkelanjutan, dipilih satu per satu untuk efektivitas dan keamanan jangka panjang.</p></div>
+        <h4>Ganti Oli & Filter</h4>
+      </div>
+      <div class="service-tile reveal">
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><path d="M19.77 7.23l.01-.01-3.72-3.72L15 4.56l2.11 2.11c-.94.36-1.61 1.26-1.61 2.33 0 1.38 1.12 2.5 2.5 2.5.36 0 .69-.08 1-.21v7.21c0 .55-.45 1-1 1s-1-.45-1-1V14c0-1.1-.9-2-2-2h-1V5c0-1.1-.9-2-2-2H6c-1.1 0-2 .9-2 2v16h10v-7.5h1.5v5c0 1.38 1.12 2.5 2.5 2.5s2.5-1.12 2.5-2.5V9c0-.69-.28-1.32-.73-1.77zM12 10H6V5h6v5z"/></svg>
         </div>
-        <div class="reason reveal d4">
-          <div class="reason-ico">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-          </div>
-          <div><div class="r-title">Transparansi Penuh</div><p class="r-desc">Setiap bahan aktif dijelaskan fungsinya. Tidak ada formula tersembunyi — kamu berhak tahu.</p></div>
+        <h4>Perbaikan Mesin</h4>
+      </div>
+      <div class="service-tile reveal">
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+        </div>
+        <h4>Sistem Pengereman</h4>
+      </div>
+      <div class="service-tile reveal">
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><path d="M7 4v2H4v13h16V6h-3V4H7zm0 2h10v11H7V6zm2 2v2h6V8H9zm0 3v2h6v-2H9zm0 3v2h4v-2H9z"/></svg>
+        </div>
+        <h4>Kelistrikan & Aki</h4>
+      </div>
+      <div class="service-tile reveal">
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 008 20c9 0 10-8 10-8-1 2-3.33 3.07-5.43 3.44L13 13l1-4-3 2-2 3 2-1 1-1.5 1 4-1 1.5C12 19 9 18.5 8 17c0 0 .5-3.5 4-5.5L17 8z"/></svg>
+        </div>
+        <h4>Ganti Ban & Velg</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="alasan" style="padding: 7rem 5%;">
+  <div style="max-width:1100px; margin:0 auto;">
+    <div class="alasan-wrap">
+      <div>
+        <div class="section-tag">Alasan Memilih Kami</div>
+        <h2 class="section-title reveal">Kepercayaan<br/>Dibangun dari<br/>Kualitas Nyata</h2>
+        <p class="section-body reveal" style="text-align:left; max-width:100%;">Lebih dari sekedar bengkel, PIK Motor adalah mitra terpercaya yang memahami nilai motor bagi kehidupan sehari-hari Anda. Setiap keputusan kami didasarkan pada satu prinsip: kepuasan pelanggan di atas segalanya.</p>
+        <ul class="alasan-list">
+          <li class="reveal">
+            <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div><strong>Lokasi Strategis & Mudah Dijangkau</strong><p>Terletak di Jl. Perintis Kemerdekaan, pusat Tasikmalaya, mudah diakses dari berbagai penjuru kota.</p></div>
+          </li>
+          <li class="reveal">
+            <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div><strong>Diagnosa Akurat & Cepat</strong><p>Menggunakan alat diagnostik terkini untuk mendeteksi masalah secara tepat, sehingga tidak ada biaya perbaikan yang tidak perlu.</p></div>
+          </li>
+          <li class="reveal">
+            <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div><strong>Pelayanan Ramah & Profesional</strong><p>Tim kami dilatih tidak hanya secara teknis tetapi juga dalam pelayanan pelanggan untuk pengalaman servis yang menyenangkan.</p></div>
+          </li>
+          <li class="reveal">
+            <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div><strong>Harga Kompetitif & Jujur</strong><p>Tarif yang adil dan transparan, tidak ada mark-up tersembunyi. Anda membayar hanya untuk apa yang benar-benar dikerjakan.</p></div>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <div class="alasan-img reveal">
+          <img src="bengkel-pik-motor.jpg" alt="Bengkel PIK Motor Tasikmalaya" />
+          <div class="alasan-img-badge">Berpengalaman 10+ Tahun</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section id="testi">
-  <div class="testi-top">
-    <div>
-      <div class="label-sm reveal">Suara Pelanggan Nyata</div>
-      <h2 class="testi-heading reveal d1">Mereka Sudah<br><em>Merasakannya.</em></h2>
-    </div>
-    <div class="rating-block reveal d2">
+<!-- TESTIMONI -->
+<section id="testimoni">
+  <div class="testi-header">
+    <div class="section-tag">Suara Pelanggan</div>
+    <h2 class="section-title reveal">Mereka Sudah<br/>Membuktikannya</h2>
+    <p class="section-body reveal">Ribuan pelanggan setia telah mempercayakan motor kesayangan mereka kepada kami. Inilah kisah mereka.</p>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card reveal">
       <div class="stars">
-        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
       </div>
-      <p class="rating-txt">4.9 dari 5 bintang · 2.400+ ulasan terverifikasi</p>
-    </div>
-  </div>
-  <div class="testi-layout">
-    <div class="testi-card featured reveal">
-      <span class="tc-quote">&ldquo;</span>
-      <p class="tc-text">Sudah 3 tahun saya nyari produk yang cocok untuk kulit sensitif. Veloura Skin jadi satu-satunya yang tidak bikin breakout. Minggu kedua sudah keliatan lebih cerah dan merata. Saya tidak akan pakai produk lain lagi.</p>
-      <div class="tc-author">
-        <div class="tc-av">AR</div>
+      <div class="testi-quote">"</div>
+      <p class="testi-text">Sudah langganan di PIK Motor lebih dari 5 tahun. Mekaniknya jujur, harganya wajar, dan hasilnya selalu memuaskan. Motor saya selalu beres setelah servis di sini.</p>
+      <div class="testi-author">
+        <div class="testi-avatar"><img src="https://static.vecteezy.com/system/resources/previews/046/010/545/non_2x/user-icon-simple-design-free-vector.jpg" alt="Pelanggan" /></div>
         <div>
-          <div class="tc-name">Anisa Ramadhani</div>
-          <div class="tc-info">Jakarta, Kulit Sensitif</div>
-          <div class="tc-ver">✓ Pembeli Terverifikasi</div>
+          <div class="testi-name">Bapak Rahmat S.</div>
+          <div class="testi-role">Pelanggan Setia, Tasikmalaya</div>
         </div>
       </div>
     </div>
-    <div class="testi-card reveal d1">
-      <span class="tc-quote">&ldquo;</span>
-      <p class="tc-text">Sering di luar ruangan karena kerjaan. Sejak pakai Veloura, perbedaannya signifikan — rekan kerja sampai nanya pakai apa.</p>
-      <div class="tc-author">
-        <div class="tc-av">DP</div>
+    <div class="testi-card reveal">
+      <div class="stars">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <div class="testi-quote">"</div>
+      <p class="testi-text">Awalnya ragu mau servis di sini, tapi ternyata teknisinya sangat profesional. Mereka menjelaskan masalah motor saya dengan detail sebelum mengerjakan. Tidak ada biaya yang mengejutkan.</p>
+      <div class="testi-author">
+        <div class="testi-avatar"><img src="https://static.vecteezy.com/system/resources/previews/046/010/545/non_2x/user-icon-simple-design-free-vector.jpg" alt="Pelanggan" /></div>
         <div>
-          <div class="tc-name">Dian Pertiwi</div>
-          <div class="tc-info">Surabaya, Kulit Kombinasi</div>
-          <div class="tc-ver">✓ Pembeli Terverifikasi</div>
+          <div class="testi-name">Ibu Desi W.</div>
+          <div class="testi-role">Pelanggan Baru, Mangkubumi</div>
         </div>
       </div>
     </div>
-    <div class="testi-card reveal d2">
-      <span class="tc-quote">&ldquo;</span>
-      <p class="tc-text">Bekas jerawat yang sudah tahunan mulai memudar di minggu ketiga. Worth every penny.</p>
-      <div class="tc-author">
-        <div class="tc-av">MF</div>
-        <div>
-          <div class="tc-name">Maya Fitriani</div>
-          <div class="tc-info">Bandung, Bekas Jerawat</div>
-          <div class="tc-ver">✓ Pembeli Terverifikasi</div>
-        </div>
+    <div class="testi-card reveal">
+      <div class="stars">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
       </div>
-    </div>
-    <div class="testi-card reveal d1">
-      <span class="tc-quote">&ldquo;</span>
-      <p class="tc-text">Kulit kering dan pecah-pecah di area pipi kini jauh lebih baik. Teksturnya berubah drastis dalam seminggu.</p>
-      <div class="tc-author">
-        <div class="tc-av">SR</div>
+      <div class="testi-quote">"</div>
+      <p class="testi-text">Motor matic saya sudah tidak bertenaga selama berbulan-bulan. Setelah dibawa ke PIK Motor, dalam waktu 2 jam langsung terasa seperti baru lagi. Hasilnya jauh melampaui ekspektasi saya.</p>
+      <div class="testi-author">
+        <div class="testi-avatar"><img src="https://static.vecteezy.com/system/resources/previews/046/010/545/non_2x/user-icon-simple-design-free-vector.jpg" alt="Pelanggan" /></div>
         <div>
-          <div class="tc-name">Siti Rahmaini</div>
-          <div class="tc-info">Medan, Kulit Kering</div>
-          <div class="tc-ver">✓ Pembeli Terverifikasi</div>
-        </div>
-      </div>
-    </div>
-    <div class="testi-card reveal d2">
-      <span class="tc-quote">&ldquo;</span>
-      <p class="tc-text">Sebagai makeup artist, klien yang pakai Veloura jauh lebih mudah di-makeup. Sekarang saya rekomendasikan ke semua klien.</p>
-      <div class="tc-author">
-        <div class="tc-av">LW</div>
-        <div>
-          <div class="tc-name">Laras Widyanti</div>
-          <div class="tc-info">Jakarta, Makeup Artist</div>
-          <div class="tc-ver">✓ Pembeli Terverifikasi</div>
+          <div class="testi-name">Mas Agus P.</div>
+          <div class="testi-role">Pelanggan Reguler, Tasikmalaya Kota</div>
         </div>
       </div>
     </div>
@@ -864,170 +1013,228 @@ footer {
 </section>
 
 <!-- URGENCY -->
-<section id="urgency">
-  <div class="urgency-tag">Penawaran Terbatas</div>
-  <h2 class="urgency-title reveal">Harga Spesial Ini<br><em>Tidak Akan Lama</em></h2>
-  <p class="urgency-sub reveal d1">Penawaran bundling eksklusif berlaku dalam waktu terbatas. Setelah periode ini berakhir, harga kembali ke harga normal.</p>
-  <div class="cd-row reveal d2">
-    <div class="cd-unit"><span class="cd-n" id="cd-h">00</span><span class="cd-l">Jam</span></div>
-    <div class="cd-unit"><span class="cd-n" id="cd-m">00</span><span class="cd-l">Menit</span></div>
-    <div class="cd-unit"><span class="cd-n" id="cd-s">00</span><span class="cd-l">Detik</span></div>
-  </div>
-  <div class="stock-info reveal d3">
-    <p class="stock-txt">Stok tersisa untuk batch ini</p>
-    <div class="s-bar"><div class="s-fill"></div></div>
-    <p class="s-note">Hanya 73 paket lagi dari 270 paket tersedia</p>
+<section id="urgensi">
+  <div class="urgensi-inner">
+    <div class="section-tag">Jangan Tunggu Terlambat</div>
+    <h2 class="section-title reveal">Promo Servis Terbatas<br/>Hanya Bulan Ini</h2>
+    <p class="section-body reveal">Dapatkan layanan servis dengan harga spesial. Penawaran ini hanya berlaku dalam waktu terbatas dan kuota terbatas.</p>
+    <div class="urgensi-timer">
+      <div class="timer-block">
+        <div class="timer-num" id="days">00</div>
+        <div class="timer-label">Hari</div>
+      </div>
+      <div class="timer-block">
+        <div class="timer-num" id="hours">00</div>
+        <div class="timer-label">Jam</div>
+      </div>
+      <div class="timer-block">
+        <div class="timer-num" id="minutes">00</div>
+        <div class="timer-label">Menit</div>
+      </div>
+      <div class="timer-block">
+        <div class="timer-num" id="seconds">00</div>
+        <div class="timer-label">Detik</div>
+      </div>
+    </div>
+    <ul class="urgensi-points">
+      <li>Kuota promo terbatas hanya 50 pelanggan per bulan</li>
+      <li>Harga normal akan berlaku kembali setelah promo berakhir</li>
+      <li>Jadwal mekanik terisi cepat, booking lebih awal lebih baik</li>
+    </ul>
+    <a href="#cta" class="btn-primary">Amankan Slot Sekarang</a>
   </div>
 </section>
 
 <!-- BONUS -->
 <section id="bonus">
-  <div class="bonus-top">
-    <div>
-      <div class="label-sm reveal">Eksklusif untuk Pemesanan Sekarang</div>
-      <h2 class="bonus-title reveal d1">Bonus Senilai<br><em>Ratusan Ribu</em></h2>
-    </div>
-    <p class="bonus-note reveal d2">Semua bonus ini khusus untuk kamu yang memesan dalam periode penawaran. Tidak tersedia di pembelian biasa.</p>
+  <div class="bonus-header">
+    <div class="section-tag">Nilai Tambah</div>
+    <h2 class="section-title reveal">Bonus Eksklusif<br/>Untuk Anda</h2>
+    <p class="section-body reveal">Setiap pelanggan PIK Motor mendapatkan keuntungan lebih dari sekadar servis motor yang beres.</p>
   </div>
   <div class="bonus-grid">
     <div class="bonus-card reveal">
-      <div class="b-tag">Bonus 1</div>
-      <div class="bico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-      <h3 class="b-name">Panduan Skincare Ritual</h3>
-      <p class="b-text">E-book eksklusif panduan lengkap rutinitas pagi & malam untuk kulit tropis.</p>
-      <div class="b-val"><s>Rp 150.000</s> GRATIS</div>
+      <div class="bonus-tag">Gratis</div>
+      <h4>Cek Kondisi Motor Menyeluruh</h4>
+      <p>Pemeriksaan 30 titik komponen motor secara gratis setiap kunjungan, tanpa biaya tambahan apapun.</p>
     </div>
-    <div class="bonus-card reveal d1">
-      <div class="b-tag">Bonus 2</div>
-      <div class="bico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
-      <h3 class="b-name">Travel Size Mini Kit</h3>
-      <p class="b-text">Set mini Veloura Skin ukuran travel untuk menemani perjalananmu ke mana saja.</p>
-      <div class="b-val"><s>Rp 120.000</s> GRATIS</div>
+    <div class="bonus-card reveal">
+      <div class="bonus-tag">Bonus</div>
+      <h4>Kartu Member & Poin Reward</h4>
+      <p>Kumpulkan poin setiap transaksi dan tukarkan dengan diskon atau layanan gratis pada kunjungan berikutnya.</p>
     </div>
-    <div class="bonus-card reveal d2">
-      <div class="b-tag">Bonus 3</div>
-      <div class="bico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-      <h3 class="b-name">Akses Private Community</h3>
-      <p class="b-text">Bergabung dengan ribuan member aktif. Tips eksklusif, early sale, dan konsultasi beauty advisor.</p>
-      <div class="b-val"><s>Rp 200.000</s> GRATIS</div>
+    <div class="bonus-card reveal">
+      <div class="bonus-tag">Gratis</div>
+      <h4>Konsultasi Teknis Online</h4>
+      <p>Tanyakan masalah motor Anda kapan saja melalui nomor kontak kami sebelum datang ke bengkel.</p>
     </div>
-    <div class="bonus-card reveal d3">
-      <div class="b-tag">Bonus 4</div>
-      <div class="bico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg></div>
-      <h3 class="b-name">Konsultasi 1-on-1</h3>
-      <p class="b-text">Sesi 30 menit dengan beauty consultant profesional via video call untuk analisis kulit personal.</p>
-      <div class="b-val"><s>Rp 250.000</s> GRATIS</div>
+    <div class="bonus-card reveal">
+      <div class="bonus-tag">Bonus</div>
+      <h4>Pengingat Jadwal Servis Berkala</h4>
+      <p>Tim kami akan mengingatkan Anda ketika motor sudah waktunya untuk servis berikutnya. Tidak akan kelewat lagi.</p>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
 <section id="cta">
-  <div class="cta-grid">
-    <div class="cta-left">
-      <div class="cta-tag">Penawaran Spesial Hari Ini</div>
-      <h2 class="cta-head reveal">Wujudkan <em>Kulit Impianmu</em><br>Mulai Sekarang</h2>
-      <p class="cta-body reveal d1">Dapatkan Veloura Skin Starter Kit lengkap beserta semua bonus eksklusif. Hanya untuk pemesanan dalam periode terbatas.</p>
-      <div class="price-block reveal d2">
-        <span class="p-main">Rp 299.000</span>
-        <div class="p-row">
-          <span class="p-cut">Rp 550.000</span>
-          <span class="p-badge">Hemat 45%</span>
-        </div>
-      </div>
-      <ul class="perks reveal d2">
-        <li>Veloura Skin Starter Kit lengkap (3 produk)</li>
-        <li>4 bonus eksklusif senilai Rp 720.000</li>
-        <li>Pengiriman gratis ke seluruh Indonesia</li>
-        <li>Garansi uang kembali 30 hari</li>
-        <li>Pembayaran aman enkripsi SSL</li>
-      </ul>
-      <a href="https://wa.me/6282315349989" class="btn-gold-big reveal d3">Pesan Sekarang — Rp 299.000</a>
-      <p class="cta-fine reveal d3">Harga ini berakhir ketika countdown mencapai nol</p>
-    </div>
-    <div class="cta-right">
-      <div class="cta-bg-text">Veloura</div>
-      <img class="cta-img" src="https://i.pinimg.com/1200x/16/be/f1/16bef1bdcc74c226a0f334df5dcbc037.jpg" alt="Veloura Skin Bundle">
-      <div class="cta-trust">
-        <span class="t-pill">BPOM Terdaftar</span>
-        <span class="t-pill">Dermatologist Tested</span>
-        <span class="t-pill">SSL Secured</span>
-        <span class="t-pill">Bebas Paraben</span>
-      </div>
+  <div class="cta-inner">
+    <div class="section-tag">Hubungi Kami Sekarang</div>
+    <h2 class="section-title reveal">Siap Membuat<br/>Motor Anda<br/>Kembali Prima?</h2>
+    <p class="section-body reveal">Jangan biarkan masalah motor mengganggu aktivitas Anda. Hubungi kami sekarang dan dapatkan solusi terbaik.</p>
+    <br/>
+    <a href="tel:082241493725" class="cta-phone">0822-4149-3725</a>
+    <br/>
+    <a href="#cta" class="btn-primary" style="margin-bottom:1.5rem; display:inline-block;">Hubungi Admin untuk Info Lebih Lanjut</a>
+    <div class="cta-address">
+      <strong style="color:var(--white); font-family:'Syne',sans-serif; font-size:.9rem;">Alamat Bengkel:</strong><br/>
+      Jl. Perintis Kemerdekaan No.113, Sambongjaya,<br/>
+      Kec. Mangkubumi, Kab. Tasikmalaya, Jawa Barat 46121<br/><br/>
+      <a href="tel:082241493725">Telepon: 0822-4149-3725</a>
     </div>
   </div>
 </section>
 
 <!-- GUARANTEE -->
-<section id="guarantee">
-  <div class="g-circle reveal">
-    <span class="g-num">30</span>
-    <span class="g-lbl">Hari</span>
+<section id="garansi">
+  <div class="garansi-box reveal">
+    <div class="garansi-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 4l5 2.18V11c0 3.5-2.33 6.79-5 7.93-2.67-1.14-5-4.43-5-7.93V7.18L12 5z"/></svg>
+    </div>
+    <h3>Garansi Kepuasan 100%</h3>
+    <p>Setiap pekerjaan servis di PIK Motor dilindungi dengan garansi penuh. Apabila dalam 7 hari setelah servis terdapat masalah yang berkaitan dengan pekerjaan yang kami lakukan, kami akan menanganinya tanpa biaya tambahan. Kepuasan Anda adalah tanggung jawab kami.</p>
   </div>
-  <h2 class="g-title reveal d1">Garansi Kepuasan Penuh,<br>Tanpa Syarat</h2>
-  <p class="g-body reveal d2">Kami begitu yakin dengan formula Veloura Skin sehingga kami memberikan garansi uang kembali 100% dalam 30 hari pertama. Jika kamu tidak melihat perubahan nyata — atau karena alasan apapun — kami kembalikan penuh pembayaranmu tanpa pertanyaan yang menyulitkan.</p>
-  <p class="g-body reveal d3">Kamu tidak menanggung risiko apapun. Kepuasanmu adalah satu-satunya hal yang penting bagi kami.</p>
-  <p class="g-note reveal d3">Proses pengembalian dana diselesaikan dalam 3–5 hari kerja setelah pengajuan diterima.</p>
 </section>
 
-<!-- DISCLAIMER -->
+<!-- NB -->
 <section id="nb">
-  <div class="nb-wrap">
-    <span class="nb-tag">Catatan Penting</span>
+  <div class="nb-box reveal">
+    <div class="nb-title">Catatan Penting</div>
     <ul class="nb-list">
-      <li>Hasil penggunaan dapat bervariasi tergantung jenis kulit, kondisi kesehatan, dan konsistensi pemakaian.</li>
-      <li>Veloura Skin bukan produk obat dan tidak dimaksudkan untuk mendiagnosis, mengobati, atau mencegah kondisi medis apapun.</li>
-      <li>Lakukan uji tempel (patch test) pada area kecil selama 24 jam sebelum pemakaian pertama, terutama untuk kulit sensitif.</li>
-      <li>Harga yang tercantum adalah harga promosi selama periode penawaran. Veloura Skin berhak mengubah harga setelah periode promosi berakhir.</li>
-      <li>Garansi uang kembali berlaku untuk pembelian pertama dan tidak berlaku untuk produk yang sudah digunakan lebih dari 30% isi kemasan.</li>
-      <li>Untuk pertanyaan atau kendala pemesanan, hubungi customer service kami melalui WhatsApp atau email di halaman kontak.</li>
+      <li>Harga yang tertera dapat berubah sewaktu-waktu sesuai dengan kondisi pasar spare part dan kebutuhan spesifik kendaraan.</li>
+      <li>Penawaran promo berlaku untuk jenis servis tertentu dan tidak dapat digabungkan dengan diskon atau promo lainnya.</li>
+      <li>Garansi servis berlaku dengan syarat dan ketentuan yang berlaku. Hubungi admin untuk informasi detail.</li>
+      <li>Untuk estimasi biaya yang akurat, silakan kunjungi bengkel atau hubungi kami terlebih dahulu agar teknisi dapat melakukan diagnosa awal.</li>
+      <li>PIK Motor berhak menolak pekerjaan yang di luar kapasitas atau tidak sesuai standar keselamatan operasional.</li>
     </ul>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div>
-    <div class="f-logo">Veloura <span class="dot"></span> Skin</div>
-    <div class="f-tag">Kulit Bercahaya, Kepercayaan Diri Nyata</div>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="nav-logo">PIK <span>Motor</span></span>
+      <p>Bengkel motor terpercaya di Tasikmalaya. Melayani dengan profesionalisme, kejujuran, dan dedikasi penuh sejak lebih dari satu dekade.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Navigasi</h5>
+      <ul>
+        <li><a href="#opening">Tentang Kami</a></li>
+        <li><a href="#benefit">Keunggulan</a></li>
+        <li><a href="#layanan">Layanan</a></li>
+        <li><a href="#testimoni">Testimoni</a></li>
+        <li><a href="#garansi">Garansi</a></li>
+        <li><a href="#cta">Kontak</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Kontak</h5>
+      <address>
+        Jl. Perintis Kemerdekaan No.113,<br/>
+        Sambongjaya, Kec. Mangkubumi,<br/>
+        Kab. Tasikmalaya, Jawa Barat 46121<br/><br/>
+        <a href="tel:082241493725">0822-4149-3725</a><br/><br/>
+        <span style="color:var(--text)">Hubungi admin untuk informasi lebih lanjut</span>
+      </address>
+    </div>
   </div>
-  <div class="f-copy">&copy; 2025 Veloura Skin. Semua hak dilindungi.</div>
+  <hr class="footer-divider" />
+  <div class="footer-bottom">
+    <p>© 2026 PIK Motor Tasikmalaya. Seluruh hak cipta dilindungi.</p>
+    <div class="footer-creator">
+      Dibuat oleh <strong>Siti Saropah</strong>
+    </div>
+    <div>
+      <img src="https://scontent-cgk2-2.xx.fbcdn.net/v/t39.30808-6/305774133_509769101151030_4091291951941379920_n.png?_nc_cat=100&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=HUQjyAnOiV0Q7kNvwHkZ93-&_nc_oc=Ado3dEhao-Rgop3u6U_P4LnFI9kXx1fbScMW7e_rSFMRLcYgfWE1Hv79_bIB8GBgLfM&_nc_zt=23&_nc_ht=scontent-cgk2-2.xx&_nc_gid=nbwSQliyCM55c7CTAmKwVg&_nc_ss=7a2a8&oh=00_Af48vqN3TINy0KkQDOsXXaBnUed6WYAv6JP-6uI3swAu0g&oe=6A09CE63" alt="Logo Kampus" class="campus-logo" />
+    </div>
+  </div>
 </footer>
 
 <script>
-// Scroll reveal
-const obs = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  // ── NAVBAR SCROLL ──
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
 
-// Nav scroll effect
-window.addEventListener('scroll', () => {
-  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 60);
-});
+  // ── HAMBURGER ──
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileClose = document.getElementById('mobileClose');
+  hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
+  mobileClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  function closeMobile() { mobileMenu.classList.remove('open'); }
 
-// Countdown
-function countdown() {
-  let end;
-  try { end = parseInt(localStorage.getItem('vs_cd')); } catch(e) {}
-  if (!end || isNaN(end)) {
-    end = Date.now() + 5 * 60 * 60 * 1000;
-    try { localStorage.setItem('vs_cd', end); } catch(e) {}
+  // ── SCROLL REVEAL ──
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  // ── COUNTDOWN TIMER ──
+  function getEndDate() {
+    const now = new Date();
+    return new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59);
   }
-  const diff = Math.max(0, end - Date.now());
-  const h = Math.floor(diff / 3600000);
-  const m = Math.floor((diff % 3600000) / 60000);
-  const s = Math.floor((diff % 60000) / 1000);
-  document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
-  document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
-  document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
-}
-countdown();
-setInterval(countdown, 1000);
+  function updateTimer() {
+    const end = getEndDate();
+    const diff = end - new Date();
+    if (diff <= 0) return;
+    const days    = Math.floor(diff / 86400000);
+    const hours   = Math.floor((diff % 86400000) / 3600000);
+    const minutes = Math.floor((diff % 3600000)  / 60000);
+    const seconds = Math.floor((diff % 60000)    / 1000);
+    const pad = n => String(n).padStart(2,'0');
+    document.getElementById('days').textContent    = pad(days);
+    document.getElementById('hours').textContent   = pad(hours);
+    document.getElementById('minutes').textContent = pad(minutes);
+    document.getElementById('seconds').textContent = pad(seconds);
+  }
+  updateTimer();
+  setInterval(updateTimer, 1000);
 
-// Mobile menu
-function openMobileMenu() { document.getElementById('mobileMenu').classList.add('open'); }
-function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+  // ── COUNTER ANIMATION ──
+  function animateCounter(el, target, suffix='') {
+    let start = 0;
+    const step = target / 60;
+    const interval = setInterval(() => {
+      start = Math.min(start + step, target);
+      el.innerHTML = Math.floor(start) + '<span>' + suffix + '</span>';
+      if (start >= target) clearInterval(interval);
+    }, 25);
+  }
+  const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const nums = e.target.querySelectorAll('.stat-num');
+        nums.forEach(n => {
+          const txt = n.textContent;
+          const match = txt.match(/(\d+)([+%]*)/);
+          if (match) animateCounter(n, parseInt(match[1]), match[2]);
+        });
+        statsObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  const heroStats = document.querySelector('.hero-stats');
+  if (heroStats) statsObserver.observe(heroStats);
 </script>
 </body>
 </html>
